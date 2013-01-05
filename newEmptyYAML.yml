@@ -1,0 +1,571 @@
+---
+blocks:
+    layout:
+        cache: none
+        template:
+            name: "layout"
+            role: "layoutDetail"
+            kind: "layouts"
+            "data":
+                title: "tytul strony"
+                onetAdsConf: 
+                    target: 'TESTWIADOMOSCI/GLOWNA'
+                    gemiusId: '.KhA4jRDz_kn1N0KOT0N.cch3yh8FgddpS_5v_jbqyn.o7'
+                    noDot: 0
+                    no_banner: false
+                    google_box_channel: 5716326316
+                adSlots:
+                    - "top"
+                    - "right"
+                fbAppCfg:
+                    activityType: ""
+                    objectType": "",
+                    activityObjectUrl": "",
+                    serviceName": "",
+                    serviceDomain": "",
+                    fbAppId": "",
+                    activityTitle": "",
+                    version": ""
+    pageNavTop:
+        cache: none
+        template:
+            name: "pageNavTopModule"
+            role: "pageNavTop"
+            kind: "defaults"
+            data:
+            require:
+
+                -   name: "pageNavTopMenuItemOnet"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data: 
+                        title: "Onet"
+                        url: "http://ofirmie.onet.pl/"
+                        itemId: "1"
+                    require:
+                        
+                        -   name: "pageNavTopServiceListOnet"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: "Prywatność"
+                                        url: "http://ofirmie.onet.pl/polityka-prywatnosci"
+                                    -   title: "Reklama"
+                                        url: "http://reklama.onet.pl/"
+                                    -   title: "Praca w Onecie"
+                                        url: "http://ofirmie.onet.pl/0,0,0,PL,aktualne_ogloszenia,oferta.html"
+                                    -   title: "Pomoc"
+                                        url: "http://pomoc.onet.pl/"
+                                    -   title: "Zapytaj"
+                                        url: "http://zapytaj.onet.pl/"
+
+                                moreTitle: "o firmie"
+                                moreUrl: "http://ofirmie.onet.pl/"
+
+                        
+
+                -   name: "pageNavTopMenuItemWiadomosci"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data: 
+                        title: "Wiadomości"
+                        url: "http://wiadomosci.onet.pl/"
+                        itemId: "2"
+                    require:
+                        
+                        -   name: "pageNavTopServiceListWiadomosci"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: "Pogoda"
+                                        url: "http://pogoda.onet.pl/"
+                                    -   title: "Świat"
+                                        url: "http://wiadomosci.onet.pl/swiat/kategoria.html"
+                                    -   title: "Polska"
+                                        url: "http://wiadomosci.onet.pl/kraj/kategoria.html"
+                                    -   title: "Regionalne"
+                                        url: "http://wiadomosci.onet.pl/regionalne/regiony.html"
+                                    -   title: "Przegląd prasy"
+                                        url: "http://wiadomosci.onet.pl/kiosk/kiosk.html"
+                                moreTitle: "Wiadomości"
+                                moreUrl: "http://wiadomosci.onet.pl"
+
+                        -   name: "pageNavTopNewsListWiadomosci"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListWiadomosci.json"
+
+
+                -   name: "pageNavTopMenuItemSport"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data:
+                        title: "Sport"
+                        url: "http://sport.onet.pl/"
+                        itemId: "3"
+                    require:
+                        -   name: "pageNavTopServiceListSport"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: "Piłka nożna"
+                                        url: "http://sport.onet.pl/pilka-nozna/sport.html"
+                                    -   title: "Formuła 1"
+                                        url: "http://sport.onet.pl/f1/sport.html"
+                                    -   title: "Żużel"
+                                        url: "http://sport.onet.pl/zuzel/sport-ekstra.html"
+                                    -   title: "Siatkówka"
+                                        url: "http://sport.onet.pl/siatkowka/sport.html"
+                                    -   title: "Boks"
+                                        url: "http://sport.onet.pl/boks/sport.html"
+                                moreTitle: "Sport"
+                                moreUrl: "http://sport.onet.pl"
+
+                        -   name: "pageNavTopNewsListSport"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListSport.json"
+
+
+                -   name: "pageNavTopMenuItemBiznes"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data:
+                        title: "Biznes"
+                        url: "http://biznes.onet.pl/"
+                        itemId: "4"
+                    require:
+                        -   name: "pageNavTopServiceListBiznes"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: "Waluty"
+                                        url: "http://waluty.onet.pl/"
+                                    -   title: "Giełda"
+                                        url: "http://gielda.onet.pl/"
+                                    -   title: "Fundusze"
+                                        url: "http://fundusze.onet.pl/"
+                                    -   title: "Nieruchomości"
+                                        url: "http://nieruchomosci.onet.pl/"
+                                    -   title: "Firma"
+                                        url: "http://firma.onet.pl/"
+                                moreTitle: "Biznes"
+                                moreUrl: "http://biznes.onet.pl"
+
+
+                        -   name: "pageNavTopNewsListBiznes"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListBiznes.json"
+
+                -   name: "pageNavTopMenuItemRozrywka"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data:
+                        title: "Rozrywka"
+                        url: "http://www.plejada.pl/"
+                        itemId: "5"
+                    require:
+                        -   name: "pageNavTopServiceListRozrywka"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: "Program TV"
+                                        url: "http://programtv.onet.pl/"
+                                    -   title: "Repertuar kin"
+                                        url: "http://repertuar.onet.pl/"
+                                    -   title: "Film"
+                                        url: "http://film.onet.pl/"
+                                    -   title: "Muzyka"
+                                        url: "http://muzyka.onet.pl/"
+                                    -   title: "Teledyski"
+                                        url: "http://muzyka.onet.pl/teledyski/teledyski.html"
+                                moreTitle: "Plejada"
+                                moreUrl: "http://www.plejada.pl/"
+
+
+                        -   name: "pageNavTopNewsListRozrywka"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListRozrywka.json"
+
+
+                -   name: "pageNavTopMenuItemTechMoto"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data:
+                        title: "Tech-Moto"
+                        url: "http://technowinki.onet.pl/"
+                        itemId: "6"
+                    require:
+                        -   name: "pageNavTopServiceListTechMoto"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: "Moto"
+                                        url: "http://moto.onet.pl/"
+                                    -   title: "Komputery"
+                                        url: "http://technowinki.onet.pl/komputery/artykuly.html"
+                                    -   title: "Mobile"
+                                        url: "http://technowinki.onet.pl/mobile/artykuly.html"
+                                    -   title: "Gry"
+                                        url: "http://gry.onet.pl/"
+                                    -   title: "PCLab.pl"
+                                        url: "http://pclab.pl/"
+                                moreTitle: "Technowinki"
+                                moreUrl: "http://technowinki.onet.pl/"
+
+
+                        -   name: "pageNavTopNewsListTechNoto"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListTechMoto.json"
+
+
+                -   name: "pageNavTopMenuItemStyl"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data:
+                        title: "Styl"
+                        url: "http://kobieta.onet.pl/"
+                        itemId: "7"
+                    require:
+                        -   name: "pageNavTopServiceListStyl"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: "Horoskop"
+                                        url: "http://magia.onet.pl/horoskop/"
+                                    -   title: "Sennik"
+                                        url: "http://magia.onet.pl/sennik/"
+                                    -   title: "Gotowanie"
+                                        url: "http://gotowanie.onet.pl/"
+                                    -   title: "Zdrowie"
+                                        url: "http://zdrowie.onet.pl/"
+                                    -   title: "Facet"
+                                        url: "http://facet.onet.pl/"
+                                moreTitle: "Kobieta"
+                                moreUrl: "http://kobieta.onet.pl/"
+
+
+                        -   name: "pageNavTopNewsListStyl"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListStyl.json"
+
+
+                -   name: "pageNavTopMenuItemWiedza"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data:
+                        title: "Wiedza i świat"
+                        url: "http://portalwiedzy.onet.pl/"
+                        itemId: "8"
+                    require:
+                        -   name: "pageNavTopServiceListWiedza"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: "Słowniki"
+                                        url: "http://portalwiedzy.onet.pl/tlumacz.html"
+                                    -   title: "Nauka"
+                                        url: "http://ciekawe.onet.pl/"
+                                    -   title: "Kultura"
+                                        url: "http://kultura.onet.pl/"
+                                    -   title: "Religia"
+                                        url: "http://religia.onet.pl/"
+                                    -   title: "Podróże"
+                                        url: "http://podroze.onet.pl/"
+                                moreTitle: "Wiem"
+                                moreUrl: "http://portalwiedzy.onet.pl/"
+
+
+                        -   name: "pageNavTopNewsListWiedza"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListWiedza.json"
+
+                -   name: "pageNavTopMenuItemZdrowie"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data:
+                        title: "Zdrowie"
+                        url: "http://www.plejada.pl/"
+                        itemId: "9"
+                    require:
+                        -   name: "pageNavTopServiceListZdrowie"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: ""
+                                        url: ""
+                                    -   title: ""
+                                        url: ""
+                                    -   title: ""
+                                        url: ""
+                                    -   title: ""
+                                        url: ""
+                                    -   title: ""
+                                        url: ""
+                                moreTitle: "Plejada"
+                                moreUrl: "http://www.plejada.pl/"
+
+
+                        -   name: "pageNavTopNewsListZdrowie"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListPlejada.json"
+
+
+
+                -   name: "pageNavTopMenuItemPlejada"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data:
+                        title: "Plejada"
+                        url: "http://www.plejada.pl/"
+                        itemId: "10"
+                    require:
+                        -   name: "pageNavTopServiceListPlejada"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: ""
+                                        url: ""
+                                    -   title: ""
+                                        url: ""
+                                    -   title: ""
+                                        url: ""
+                                    -   title: ""
+                                        url: ""
+                                    -   title: ""
+                                        url: ""
+                                moreTitle: "Plejada"
+                                moreUrl: "http://www.plejada.pl/"
+
+
+                        -   name: "pageNavTopNewsListPlejada"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListPlejada.json"
+
+
+                -   name: "pageNavTopMenuItemOgladaj"
+                    role: "pageNavTopMenuItem"
+                    kind: "defaults"
+                    data:
+                        title: "Oglądaj"
+                        url: "http://vod.onet.pl/"
+                        itemId: "11"
+                    require:
+                        -   name: "pageNavTopServiceListOgladaj"
+                            role: "pageNavTopServiceList"
+                            kind: "defaults"
+                            data:
+                                items:
+                                    -   title: "Filmy"
+                                        url: "http://vod.onet.pl/filmy,19,kategoria.html"
+                                    -   title: "Seriale"
+                                        url: "http://vod.onet.pl/seriale,18,kategoria.html"
+                                    -   title: "Dokumenty"
+                                        url: "http://vod.onet.pl/dokumenty,139,kategoria.html"
+                                    -   title: "Bajki"
+                                        url: "http://bajki.onet.pl/"
+                                    -   title: "Klipy wideo"
+                                        url: "http://wideo.onet.pl/"
+                                moreTitle: "VoD"
+                                moreUrl: "http://vod.onet.pl/"
+
+
+                        -   name: "pageNavTopNewsListOgladaj"
+                            role: "pageNavTopNewsList"
+                            kind: "defaults"
+                            "#data":
+                                driver: "DriverLocalFile"
+                                url: "./mock/pageNavNewsListOgladaj.json"
+
+
+
+                -   name: "pageNavTopMenuAccountModule"
+                    role: "pageNavTopMenuAccount"
+                    kind: "defaults"
+                    data:
+                        loginAppId: "107"
+    head:
+        cache: none
+        template:
+            name: "head"
+            role: "head"
+            kind: "sections"
+    neck:
+        cache: none
+        template:
+            name: "neck"
+            role: "neck"
+            kind: "sections"
+            
+    body:
+        cache: none
+        template:
+            name: "body"
+            role: "body"
+            kind: "sections"
+            require:
+                - name: "breadcrumbs"
+                  role: "breadcrumbs"
+                  kind: "content"
+                  data:
+                    - name: "Wiadomosci"
+                      url: "http://www.onet.pl"
+                    - name: "Kraj"
+                      url: "http://www.onet.pl"
+                    - name: "Emerytury"
+                      url: "http://www.onet.pl"
+                - name: "mainTitle"
+                  role: "mainTitle"
+                  kind: "content"
+                  "#data":
+                      driver: "DriverRemote"
+                      url: "query.mobile.onetapi.pl"
+                      method: "get"
+                      gateway:    
+                          host: "rtxint.c1r1.onet"
+                          port: 80
+                      params:
+                          - ?cdp_id              
+                - name: "mainDetail"
+                  role: "mainDetail"
+                  kind: "sections/subsections"
+                  require:
+                      - name: "lead"
+                        role: "lead"
+                        kind: "content"    
+                        "#data":
+                            driver: "DriverRemote"
+                            url: "query.mobile.onetapi.pl"
+                            method: "get"
+                            gateway:    
+                                host: "rtxint.c1r1.onet"
+                                port: 80
+                            params:
+                                - ?cdp_id
+                      - name: "additionalInfo"
+                        role: "additionalInfo"
+                        kind: "content"
+                      - name: "detail"
+                        role: "detail"
+                        kind: "content"    
+                        "#data":
+                            driver: "DriverRemote"
+                            url: "query.mobile.onetapi.pl"
+                            method: "get"
+                            gateway:    
+                                host: "rtxint.c1r1.onet"
+                                port: 80
+                            params:
+                                - ?cdp_id
+
+    
+                - name: "extra"
+                  role: "extra"
+                  kind: "sections/subsections"
+                  require:
+                      - name: "fbapp"
+                        role: "fbapp"
+                        kind: "content/fbapp"  
+                      - name: "extraSearch"
+                        role: "search"
+                        kind: "content"
+                      - name: "editorsChoice"
+                        role: "editorsChoice"
+                        kind: "content"
+                      - name: "extraAds"
+                        role: "extraAds"
+                        kind: "ads"
+                      - name: "todayOnet"
+                        role: "todayOnet"
+                        kind: "content"
+    leg:
+        cache: none
+        template:
+            name: "leg"
+            role: "leg"
+            kind: "sections"
+            require:
+                      - name: "similarContent"
+                        role: "similarContent"
+                        kind: "content"    
+                        require:
+                            - name: "breadcrumbs"
+                              role: "breadcrumbs"
+                              kind: "content"
+                              data:
+                                - name: "Wiadomosci"
+                                  url: "http://www.onet.pl"
+                                - name: "Kraj"
+                                  url: "http://www.onet.pl"
+                                - name: "Emerytury"
+                                  url: "http://www.onet.pl"
+                            - name: "similarTopics"
+                              role: "similarTopics"
+                              kind: "content"
+                              data:
+                                - name: "Donald Tusk"
+                                  url: "http://www.onet.pl"
+                                - name: "Rządy PO"
+                                  url: "http://www.onet.pl"
+                                - name: "Służba zdrowia"
+                                  url: "http://www.onet.pl"
+                                - name: "Finanse publiczne"
+                                  url: "http://www.onet.pl"
+                            - name: "stream"
+                              role: "stream"
+                              kind: "content"
+                              "#data":
+                                    driver: "DriverRemote"
+                                    url: "public.mobile.onetapi.pl"
+                                    method: "getListById"
+                                    gateway:    
+                                        host: "rtxint.c1r1.onet"
+                                        port: 80
+                                    params:
+                                        cnt_cdp_id: "PULS_CMS-List-wiadomosci"
+                                        from: 0
+                                        to: 20    
+    foot:
+        cache: none
+        template:
+            name: "foot"
+            role: "foot"
+            kind: "sections"
+
+config:
+    main: "layout"
