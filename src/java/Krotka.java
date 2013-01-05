@@ -12,9 +12,4 @@ public class Krotka
     int id;
     float cId;
     float pId;
-    
-    Krotka (int id, float cId, float pId) 
-    {
-        
-    }
 }

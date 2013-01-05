@@ -21,6 +21,8 @@ public class Logika {
     int lowPrice, highPrice, distanceToSchool, distanceToDowntown, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxSchoolDistance, maxTownDistance;
     String type, flatSize;
     boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool;
+    ArrayList krotki;
+
 
     public Logika(int lowPrice, int highPrice,
             int distanceToSchool,
@@ -31,6 +33,7 @@ public class Logika {
             boolean secured,
             boolean playground,
             boolean elevator) {
+        krotki = new ArrayList();
         this.lowPrice = lowPrice;
         this.highPrice = highPrice;
         this.distanceToSchool = distanceToSchool;
@@ -183,6 +186,8 @@ public class Logika {
 
     int calculatePercentages(Rekord rekord) {
 
+        Krotka krotka = new Krotka();
+        
         int percent = 0;
         int moneyPercent = 0;
         int areaPercent = 0;
@@ -219,6 +224,9 @@ public class Logika {
             moneyPercent = (int) ((a * rekord.price + b) * 100);
             rekord.info = "<br /><img src='img/trueSmall.png' /> Mieszkanie jest <b>tańsze</b> niż oczekiwane";
         }
+        
+        
+        //System.out.println("moneyPercent: " + moneyPercent / 100.0);
 
         if (rekord.area >= lowArea && rekord.area <= highArea) {
             areaPercent = 100;
@@ -310,7 +318,14 @@ public class Logika {
             rekord.info += "<br /><img src='img/falseSmall.png' /> Mieszkanie <b>nie ma placu zabaw</b>";
         }
 
-
+        krotka.id = rekord.id;
+        krotka.cId = (float) (moneyPercent / 100.0);
+        krotka.pId = (float) (areaPercent / 100.0);
+        krotki.add(krotka);
+        
+        
+        System.out.println("Krotka: " + krotki);
+        
         return percent;
     }
 }
