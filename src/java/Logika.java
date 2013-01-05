@@ -103,7 +103,7 @@ public class Logika {
         Database dbConn = new Database();
         dbConn.createConnection();
 
-        ResultSet rs = dbConn.getSpecificData("select * from apartment where price > " + minPrice + "&& price < " + maxPrice + "&& size > " + minArea + "&& size < " + maxArea);
+        ResultSet rs = dbConn.getSpecificData("select * from apartment  where price > " + minPrice + "&& price < " + maxPrice + "&& size > " + minArea + "&& size < " + maxArea);
 
         int i = 0;
         Rekord[] rekord = new Rekord[30];
