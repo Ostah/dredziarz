@@ -32,6 +32,7 @@
 	<h2>Wybrane atrybuty</h2>
             <ul>
                 <li>Cena od <b>${minCena}zł</b> do <b>${maxCena}zł</b></li>
+                 <li>Powierzchnia od <b>${minArea}m<sup>2</sup></b> do <b>${maxArea}m<sup>2</sup></b></li>
                 <c:if test="${garaz!=null}">
                     <li>Garaż</li>
                 </c:if>
