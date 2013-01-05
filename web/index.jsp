@@ -28,20 +28,14 @@
 		  <div id="main">
 			  <fieldset>
 			  	<legend>Jaki masz budżet na zakup nieruchomości ?</legend>		
-			  			Od <input name="minBudget" id="maxBudget" type="number"> zł do <input name="maxBudget" id="maxBudget" type="number"> zł 
+			  			Od <input name="minBudget" id="minBudget" type="number"> zł do <input name="maxBudget" id="maxBudget" type="number"> zł 
 
 			  </fieldset>
 		   </div>
 			<div id="main">
 			  <fieldset>
 			  	<legend>Jaka powierzchnia Cię interesuje ?</legend>
-			  	<select name="flatSize">
-			  		<option value="verySmallArea">Bardzo Mała</option>
-			  		<option value="smallArea">Mała</option>
-			  		<option value="mediumArea">Średnia</option>
-			  		<option value="largeArea">Duża</option>
-			  		<option value="veryLargeArea">Bardzo duża</option>
-				</select>
+                                Od <input name="minArea" id="minArea" type="number"> m2 do <input name="maxArea" id="maxArea" type="number"> m2
 			  </fieldset>
 		   </div>
 		   <div id="main">
