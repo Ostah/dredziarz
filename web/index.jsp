@@ -29,15 +29,16 @@
 			  <fieldset>
 			  	<legend>Jaki masz budżet na zakup nieruchomości ?</legend>		
 			  			Od <input name="minBudget" id="minBudget" type="number"> zł do <input name="maxBudget" id="maxBudget" type="number"> zł 
-
+                                                <div><input type="radio" name="group1" value="koniecznaKasa" checked> Warunek konieczny <br> </div>
 			  </fieldset>
 		   </div>
 			<div id="main">
 			  <fieldset>
 			  	<legend>Jaka powierzchnia Cię interesuje ?</legend>
-                                Od <input name="minArea" id="minArea" type="number"> m2 do <input name="maxArea" id="maxArea" type="number"> m2
+                                Od <input name="minArea" id="minArea" type="number"> m<sup>2</sup> do <input name="maxArea" id="maxArea" type="number"> m<sup>2</sup>
+                                <div><input type="radio" name="group1" value="koniecznaPowierzchnia"> Warunek konieczny <br> </div>
 			  </fieldset>
-		   </div>
+                        </div>
 		   <div id="main">
 		     <fieldset>
 		     	<legend>Cechy Twojego wymarzonego mieszkania </legend>
