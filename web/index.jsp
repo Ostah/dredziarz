@@ -24,6 +24,11 @@
   		  <b>1. Personalizacja &raquo;</b>
   	  </h2>
   </div>
+  <div id="sliderNavigation">
+  <form method="post" action="valueEditor">
+       <input type="submit" value="Zmien wartosci" />
+  </form>
+  </div>
   <form method="post" action="fuzzyLogic">
 		  <div id="main">
 			  <fieldset>
