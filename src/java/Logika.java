@@ -20,7 +20,7 @@ public class Logika {
     public static final int farDistance = 15;
     int lowPrice, highPrice, distanceToSchool, distanceToDowntown, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxSchoolDistance, maxTownDistance;
     String type, flatSize;
-    boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool;
+    boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney;
     ArrayList krotki;
 
 
@@ -33,7 +33,8 @@ public class Logika {
             boolean garage,
             boolean secured,
             boolean playground,
-            boolean elevator) {
+            boolean elevator,
+            boolean isMoney) {
         krotki = new ArrayList();
         this.lowPrice = lowPrice;
         this.highPrice = highPrice;
@@ -46,6 +47,7 @@ public class Logika {
         this.secured = secured;
         this.playground = playground;
         this.elevator = elevator;
+        this.isMoney = isMoney;
 /*
         System.out.println("Low cena: " + lowPrice);
         System.out.println("High cena: " + highPrice);
@@ -293,8 +295,13 @@ public class Logika {
         }
 
         krotka.id = rekord.id;
-        krotka.cId = (float) (moneyPercent / 100.0);
-        krotka.pId = (float) (areaPercent / 100.0);
+        if (isMoney) {
+            krotka.cId = (float) (moneyPercent / 100.0);
+            krotka.pId = (float) (areaPercent / 100.0);
+        } else {
+            krotka.pId = (float) (moneyPercent / 100.0);
+            krotka.cId = (float) (areaPercent / 100.0);
+        }
         krotki.add(krotka);
         
         Zadrozny zadrozny = new Zadrozny();

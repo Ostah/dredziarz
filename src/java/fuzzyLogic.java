@@ -40,7 +40,7 @@ public class fuzzyLogic extends HttpServlet {
         int distanceToSchool  = -1;
         String type = null;
         String[] estateType;
-        boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool;
+        boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney, isArea;
         
         if (request.getParameter("closeToCenter") != null) {
             if (request.getParameter("req_distanceFromCenter") != null) {
@@ -105,6 +105,13 @@ public class fuzzyLogic extends HttpServlet {
             request.setAttribute("bliskoSzkoly", true);
         }
         
+        String [] strings = request.getParameterValues("group1");
+        if (strings[0].equals("koniecznaKasa")) {
+            isMoney = true;
+        } else {
+            isMoney = false;
+        }
+       
       
 	Logika logika = new Logika(
                 Integer.parseInt(request.getParameter("minBudget")), 
@@ -117,7 +124,8 @@ public class fuzzyLogic extends HttpServlet {
                 garage, 
                 secured, 
                 playground, 
-                elevator
+                elevator,
+                isMoney
               );
 	
         List<Rekord> lista = logika.start();
