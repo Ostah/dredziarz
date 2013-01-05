@@ -21,30 +21,22 @@ public class Zadrozny {
 		MAKSIMUM, SUMA_PROB, S_LUKASIEWICZ
     }
     
-    static float compute(ArrayList<Krotka> list, int elementId, tNorm t, sNorm s)
+    static float compute(ArrayList<Krotka> list, Krotka krotka, tNorm t, sNorm s)
     {
         
         float internalMax = 0.0f;
-        float outerMax = 0.0f;
-        int position = -1;
+        float outerMax;
        
         for (int i = 0; i < list.size(); i++) {
-
-            //znajduje krotkę dla której mam obliczyć stopień przynależności
-            if(list.get(i).id == elementId) position = i;
-            
             //znajduje największą wartość z min(C(s),P(s))
-            float minimum = Math.min(list.get(i).cId, list.get(i).pId);
+            float minimum = t_norm(list.get(i).cId, list.get(i).pId,t);
             if (internalMax < minimum) internalMax = minimum;
-  
         }
-       
-        //zabezpieczenie
-        assert position!= -1 : "Nie znaleziono elementu o tym id";
 
-        outerMax = Math.max(1-internalMax, list.get(position).pId);
-        return Math.min(list.get(position).cId, outerMax);
+        outerMax = s_norm(1-internalMax, krotka.pId,s);
+        return t_norm(krotka.cId, outerMax,t);
     }
+    
     private static float t_norm(float a, float b, tNorm t)
     {
         switch(t){
