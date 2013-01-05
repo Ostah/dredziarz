@@ -12,4 +12,6 @@ public class Krotka
     int id;
     float cId;
     float pId;
+    int fuzzyPercent;
+    int bipolarPercent;
 }

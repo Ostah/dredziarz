@@ -3,6 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class Logika {
     String type, flatSize, sNorm, tNorm;
     boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney;
     ArrayList krotki;
+    Krotka krotka;
 
 
     public Logika(int lowPrice, int highPrice,
@@ -71,8 +73,8 @@ public class Logika {
 
         //calculating min and max areas
 
-        minArea = (int) (lowArea - 25);
-        maxArea = (int) (highArea + 25);
+        minArea = (int) (lowArea);// - 25);
+        maxArea = (int) (highArea);// + 25);
 
     }
 
@@ -108,7 +110,7 @@ public class Logika {
         Database dbConn = new Database();
         dbConn.createConnection();
 
-        ResultSet rs = dbConn.getSpecificData("select * from apartment  where price > " + minPrice + "&& price < " + maxPrice + "&& size > " + minArea + "&& size < " + maxArea);
+        ResultSet rs = dbConn.getSpecificData("select * from apartment");//  where price > " + minPrice + "&& price < " + maxPrice + "&& size > " + minArea + "&& size < " + maxArea);
 
         int i = 0;
         Rekord[] rekord = new Rekord[30];
@@ -149,8 +151,14 @@ public class Logika {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
+        
+        obliczBipolar();
 
         Collections.sort(list);
+        
+        
+        
         
         return list;
 /*
@@ -167,7 +175,7 @@ public class Logika {
 
     int calculatePercentages(Rekord rekord) {
 
-        Krotka krotka = new Krotka();
+        krotka = new Krotka();
         
         int percent = 0;
         int moneyPercent = 0;
@@ -177,7 +185,9 @@ public class Logika {
         int schoolDistancePercent = 0;
         int townDistancePercent = 0;
 
-        if (rekord.price >= lowPrice && rekord.price <= highPrice) {
+        if (rekord.price > maxPrice || rekord.price < minPrice) {
+            moneyPercent = 0;
+        } else if (rekord.price >= lowPrice && rekord.price <= highPrice) {
             moneyPercent = 100;
         } else if (rekord.price > highPrice) {
             int x1 = highPrice;
@@ -208,8 +218,9 @@ public class Logika {
         
         
         //System.out.println("moneyPercent: " + moneyPercent / 100.0);
-
-        if (rekord.area >= lowArea && rekord.area <= highArea) {
+        if (rekord.area > maxArea || rekord.area < minArea) {
+            areaPercent = 0;
+        } else if (rekord.area >= lowArea && rekord.area <= highArea) {
             areaPercent = 100;
         } else if (rekord.area > highArea) {
             int x1 = highArea;
@@ -307,20 +318,35 @@ public class Logika {
             krotka.pId = (float) (moneyPercent / 100.0);
             krotka.cId = (float) (areaPercent / 100.0);
         }
+        
+        krotka.fuzzyPercent = percent;
         krotki.add(krotka);
         
-        Zadrozny.tNorm t_norm=Zadrozny.tNorm.MINIMUM;
-        Zadrozny.sNorm s_norm=Zadrozny.sNorm.MAKSIMUM;
         
-        if(tNorm.equalsIgnoreCase("iloczyn")) t_norm = Zadrozny.tNorm.ILOCZYN;
-        if(tNorm.equalsIgnoreCase("t_lukasiewicz")) t_norm = Zadrozny.tNorm.T_LUKASIEWICZ;       
-        if(sNorm.equalsIgnoreCase("suma")) s_norm = Zadrozny.sNorm.SUMA_PROB;
-        if(sNorm.equalsIgnoreCase("s_lukasiewicz")) s_norm = Zadrozny.sNorm.S_LUKASIEWICZ;
+        return krotka.fuzzyPercent;
+    }
+
+    private void obliczBipolar() {
+        Enumeration e = Collections.enumeration(krotki);
+
+        while(e.hasMoreElements()){
+            Krotka krotka = (Krotka) (e.nextElement());
         
-        float wynik = Zadrozny.compute(krotki, krotka,t_norm, s_norm);
-        System.out.println("Krotka:" + krotka.id + " wartosc:" + wynik);
-        float wynik100 = wynik * 100;
         
-        return (int) (wynik100);
+            Zadrozny.tNorm t_norm=Zadrozny.tNorm.MINIMUM;
+            Zadrozny.sNorm s_norm=Zadrozny.sNorm.MAKSIMUM;
+        
+            if(tNorm.equalsIgnoreCase("iloczyn")) t_norm = Zadrozny.tNorm.ILOCZYN;
+            if(tNorm.equalsIgnoreCase("t_lukasiewicz")) t_norm = Zadrozny.tNorm.T_LUKASIEWICZ;       
+            if(sNorm.equalsIgnoreCase("suma")) s_norm = Zadrozny.sNorm.SUMA_PROB;
+            if(sNorm.equalsIgnoreCase("s_lukasiewicz")) s_norm = Zadrozny.sNorm.S_LUKASIEWICZ;
+        
+            float wynik = Zadrozny.compute(krotki, krotka,t_norm, s_norm);
+            //System.out.println("Krotka:" + krotka.id + " wartosc:" + wynik);
+            float wynik100 = wynik * 100;
+            
+            krotka.bipolarPercent = (int) (wynik100);
+            System.out.println("id: " + krotka.id + " bipolar: " + krotka.bipolarPercent + "%");
+        }  
     }
 }

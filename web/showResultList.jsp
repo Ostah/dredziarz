@@ -62,9 +62,6 @@
 					Nazwa ogłoszenia
 				</th>
                                 <th>
-                                        Zgodność liniowa
-                                </th>
-                                <th>
                                         Zgodność
                                 </th>
 				<th>
