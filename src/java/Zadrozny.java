@@ -14,32 +14,51 @@ import java.util.List;
 public class Zadrozny {
     
     public enum tNorm {
-		NORM1, NORM2
+		MINIMUM, ILOCZYN, T_LUKASIEWICZ
     }
     
     public enum sNorm {
-		NORM1, NORM2
+		MAKSIMUM, SUMA_PROB, S_LUKASIEWICZ
     }
     
     static float compute(ArrayList<Krotka> list, Krotka krotka, tNorm t, sNorm s)
     {
         
         float internalMax = 0.0f;
-        float outerMax = 0.0f;
-        int position = -1;
+        float outerMax;
        
         for (int i = 0; i < list.size(); i++) {
-            
             //znajduje największą wartość z min(C(s),P(s))
-            float minimum = Math.min(krotka.cId, krotka.pId);
+            float minimum = t_norm(list.get(i).cId, list.get(i).pId,t);
             if (internalMax < minimum) internalMax = minimum;
-  
         }
-       
-        //zabezpieczenie
-        assert position!= -1 : "Nie znaleziono elementu o tym id";
 
-        outerMax = Math.max(1-internalMax, krotka.pId);
-        return Math.min(krotka.cId, outerMax);
+        outerMax = s_norm(1-internalMax, krotka.pId,s);
+        return t_norm(krotka.cId, outerMax,t);
+    }
+    
+    private static float t_norm(float a, float b, tNorm t)
+    {
+        switch(t){
+            case MINIMUM:
+                return Math.min(a, b);
+            case ILOCZYN:
+                return a*b;
+            case T_LUKASIEWICZ:
+                return Math.max(0, a+b-1);
+        }
+        return 0.0f;
+    }
+    private static float s_norm(float a, float b, sNorm s)
+    {
+        switch(s){
+            case MAKSIMUM:
+                return Math.max(a, b);
+            case SUMA_PROB:
+                return a+b-a*b;
+            case S_LUKASIEWICZ:
+                return Math.min(1, a+b);
+        }
+        return 0.0f;
     }
 }
