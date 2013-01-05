@@ -123,6 +123,8 @@ public class fuzzyLogic extends HttpServlet {
         List<Rekord> lista = logika.start();
         
         request.setAttribute("resultList", lista);
+        request.setAttribute("minArea", Integer.parseInt(request.getParameter("minArea")));
+        request.setAttribute("maxArea", Integer.parseInt(request.getParameter("maxArea")));
         request.setAttribute("minCena", Integer.parseInt(request.getParameter("minBudget")));
         request.setAttribute("maxCena", Integer.parseInt(request.getParameter("maxBudget")));
         getServletContext().getRequestDispatcher("/showResultList.jsp").forward(request, response);
