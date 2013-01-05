@@ -297,9 +297,11 @@ public class Logika {
         krotka.pId = (float) (areaPercent / 100.0);
         krotki.add(krotka);
         
+        Zadrozny zadrozny = new Zadrozny();
+        float wynik = zadrozny.compute(krotki, krotka, null, null);
+        System.out.println("Krotka:" + krotka.id + " wartosc:" + wynik);
+        float wynik100 = wynik * 100;
         
-        System.out.println("Krotka: " + krotki);
-        
-        return percent;
+        return (int) (wynik100);
     }
 }
