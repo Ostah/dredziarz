@@ -68,13 +68,13 @@ public class Logika {
         }
         //calculating min and max prices
 
-        minPrice = (int) (lowPrice - lowPrice * 0.5);
-        maxPrice = (int) (highPrice + highPrice * 0.5);
+        minPrice = (int) (lowPrice - lowPrice * 0.5f);
+        maxPrice = (int) (highPrice + highPrice * 0.5f);
 
         //calculating min and max areas
 
-        minArea = (int) (lowArea);// - 25);
-        maxArea = (int) (highArea);// + 25);
+        minArea = (int) (lowArea - lowArea*0.2f);
+        maxArea = (int) (highArea + highArea*0.2f);
 
     }
 
@@ -142,9 +142,9 @@ public class Logika {
 
                 rekord[i].compatibility = calculatePercentages(rekord[i]);
 
-                if (rekord[i].compatibility >= 15) {
+               // if (rekord[i].compatibility >= 15) {
                     list.add(rekord[i]);
-                }
+              //  }
 
                 i++;
             }
@@ -153,7 +153,7 @@ public class Logika {
         }
         
         
-        obliczBipolar();
+        obliczBipolar(list);
 
         Collections.sort(list);
         
@@ -326,10 +326,12 @@ public class Logika {
         return krotka.fuzzyPercent;
     }
 
-    private void obliczBipolar() {
+    private void obliczBipolar(List<Rekord> list1) {
         Enumeration e = Collections.enumeration(krotki);
 
+        int count =-1;
         while(e.hasMoreElements()){
+            count++;
             Krotka krotka = (Krotka) (e.nextElement());
         
         
@@ -344,9 +346,9 @@ public class Logika {
             float wynik = Zadrozny.compute(krotki, krotka,t_norm, s_norm);
             //System.out.println("Krotka:" + krotka.id + " wartosc:" + wynik);
             float wynik100 = wynik * 100;
-            
+            System.out.println("id: " + krotka.id + " bipolar: " + wynik100 + "%");
             krotka.bipolarPercent = (int) (wynik100);
-            System.out.println("id: " + krotka.id + " bipolar: " + krotka.bipolarPercent + "%");
+            list1.get(count).compatibilityBipolar=(int) (wynik100);   
         }  
     }
 }

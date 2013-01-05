@@ -62,7 +62,10 @@
 					Nazwa ogłoszenia
 				</th>
                                 <th>
-                                        Zgodność
+                                        Zgodność fuzzy
+                                </th>
+                                <th>
+                                        Zgodność bipolarna
                                 </th>
 				<th>
 					Adres

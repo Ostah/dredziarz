@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -40,6 +41,7 @@ public class fuzzyLogic extends HttpServlet {
         int distanceToSchool  = -1;
         String type = null;
         String[] estateType;
+         HttpSession session = request.getSession();
         boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney, isArea;
         
         if (request.getParameter("closeToCenter") != null) {

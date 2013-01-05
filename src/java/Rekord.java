@@ -15,6 +15,7 @@ public class Rekord implements Comparable<Rekord>{
 	public boolean playground;
 	public boolean securityEstate;
 	public int compatibility;
+        public int compatibilityBipolar;
 	public String info = "";
 	
 	boolean calculateCompatibility() {
@@ -41,7 +42,8 @@ public class Rekord implements Comparable<Rekord>{
 
     @Override
     public String toString() {
-        return "<tr><td class='important'> " + this.title + "</td><td class='important'>" + this.compatibility + " %</td><td>" +
+        return "<tr><td class='important'> " + this.title + "</td><td class='important'>" + this.compatibility + " %</td>" +
+                "<td class='important'>" + this.compatibilityBipolar + " %</td><td>" +
                 this.address + "</td><td> " + this.area + " m<sup>2</sup> </td><td> " +
                 this.price + " zł</td><td>" + this.blocksFromCenter + " przecznice</td><td>" +
                 this.closeToSchool + " przecznice</td><td>" + checkTrue(elevator) + " </td><td> " +
