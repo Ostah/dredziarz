@@ -5,11 +5,11 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title></title>
-  <meta name="description" content="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
 
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/style.css">
@@ -39,6 +39,23 @@
                                 <div><input type="radio" name="group1" value="koniecznaPowierzchnia"> Warunek konieczny <br> </div>
 			  </fieldset>
                         </div>
+                         <div id="main">
+                <fieldset>
+                    <legend>Której t-normy i s-normy użyć ?</legend><br>
+                    T-norma: 
+                        <select name="tnorm">
+                        <option value="minimum">Minimum</option>
+                        <option value="iloczyn">Iloczyn</option>
+                        <option value="t_lukasiewicz">T-norma Łukasiewicza</option>
+                        </select>
+                   S-norma:
+                        <select name="snorm">
+                        <option value="maximum">Maximum</option>
+                        <option value="suma">Suma probabilistyczna</option>
+                        <option value="s_lukasiewicz">S-konorma Łukasiewicza</option>
+                        </select>
+                </fieldset>
+            </div>  `   
 		   <div id="main">
 		     <fieldset>
 		     	<legend>Cechy Twojego wymarzonego mieszkania </legend>
@@ -87,12 +104,7 @@
 		    	 <input type="submit" value="Wyszukaj" />
 		    </div>
   </form>
-  <footer>
-
-  </footer>
-
-
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
-</body>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
+    </body>
 </html>

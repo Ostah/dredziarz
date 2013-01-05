@@ -19,7 +19,7 @@ public class Logika {
     public static final int mediumDistance = 5;
     public static final int farDistance = 15;
     int lowPrice, highPrice, distanceToSchool, distanceToDowntown, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxSchoolDistance, maxTownDistance;
-    String type, flatSize;
+    String type, flatSize, sNorm, tNorm;
     boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney;
     ArrayList krotki;
 
@@ -34,7 +34,10 @@ public class Logika {
             boolean secured,
             boolean playground,
             boolean elevator,
-            boolean isMoney) {
+            boolean isMoney,
+            String sNorm,
+            String tNorm
+            ) {
         krotki = new ArrayList();
         this.lowPrice = lowPrice;
         this.highPrice = highPrice;
@@ -48,6 +51,8 @@ public class Logika {
         this.playground = playground;
         this.elevator = elevator;
         this.isMoney = isMoney;
+        this.sNorm = sNorm;
+        this.tNorm = tNorm;
 /*
         System.out.println("Low cena: " + lowPrice);
         System.out.println("High cena: " + highPrice);
@@ -304,8 +309,15 @@ public class Logika {
         }
         krotki.add(krotka);
         
-        Zadrozny zadrozny = new Zadrozny();
-        float wynik = zadrozny.compute(krotki, krotka, null, null);
+        Zadrozny.tNorm t_norm=Zadrozny.tNorm.MINIMUM;
+        Zadrozny.sNorm s_norm=Zadrozny.sNorm.MAKSIMUM;
+        
+        if(tNorm.equalsIgnoreCase("iloczyn")) t_norm = Zadrozny.tNorm.ILOCZYN;
+        if(tNorm.equalsIgnoreCase("t_lukasiewicz")) t_norm = Zadrozny.tNorm.T_LUKASIEWICZ;       
+        if(sNorm.equalsIgnoreCase("suma")) s_norm = Zadrozny.sNorm.SUMA_PROB;
+        if(sNorm.equalsIgnoreCase("s_lukasiewicz")) s_norm = Zadrozny.sNorm.S_LUKASIEWICZ;
+        
+        float wynik = Zadrozny.compute(krotki, krotka,t_norm, s_norm);
         System.out.println("Krotka:" + krotka.id + " wartosc:" + wynik);
         float wynik100 = wynik * 100;
         
