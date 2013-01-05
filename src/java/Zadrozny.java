@@ -14,11 +14,11 @@ import java.util.List;
 public class Zadrozny {
     
     public enum tNorm {
-		NORM1, NORM2
+		MINIMUM, ILOCZYN, T_LUKASIEWICZ
     }
     
     public enum sNorm {
-		NORM1, NORM2
+		MAKSIMUM, SUMA_PROB, S_LUKASIEWICZ
     }
     
     static float compute(ArrayList<Krotka> list, int elementId, tNorm t, sNorm s)
@@ -44,5 +44,29 @@ public class Zadrozny {
 
         outerMax = Math.max(1-internalMax, list.get(position).pId);
         return Math.min(list.get(position).cId, outerMax);
+    }
+    private static float t_norm(float a, float b, tNorm t)
+    {
+        switch(t){
+            case MINIMUM:
+                return Math.min(a, b);
+            case ILOCZYN:
+                return a*b;
+            case T_LUKASIEWICZ:
+                return Math.max(0, a+b-1);
+        }
+        return 0.0f;
+    }
+    private static float s_norm(float a, float b, sNorm s)
+    {
+        switch(s){
+            case MAKSIMUM:
+                return Math.max(a, b);
+            case SUMA_PROB:
+                return a+b-a*b;
+            case S_LUKASIEWICZ:
+                return Math.min(1, a+b);
+        }
+        return 0.0f;
     }
 }
