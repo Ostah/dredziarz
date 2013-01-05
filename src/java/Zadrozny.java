@@ -21,7 +21,7 @@ public class Zadrozny {
 		NORM1, NORM2
     }
     
-    static float compute(ArrayList<Krotka> list, int elementId, tNorm t, sNorm s)
+    static float compute(ArrayList<Krotka> list, Krotka krotka, tNorm t, sNorm s)
     {
         
         float internalMax = 0.0f;
@@ -29,12 +29,9 @@ public class Zadrozny {
         int position = -1;
        
         for (int i = 0; i < list.size(); i++) {
-
-            //znajduje krotkę dla której mam obliczyć stopień przynależności
-            if(list.get(i).id == elementId) position = i;
             
             //znajduje największą wartość z min(C(s),P(s))
-            float minimum = Math.min(list.get(i).cId, list.get(i).pId);
+            float minimum = Math.min(krotka.cId, krotka.pId);
             if (internalMax < minimum) internalMax = minimum;
   
         }
@@ -42,7 +39,7 @@ public class Zadrozny {
         //zabezpieczenie
         assert position!= -1 : "Nie znaleziono elementu o tym id";
 
-        outerMax = Math.max(1-internalMax, list.get(position).pId);
-        return Math.min(list.get(position).cId, outerMax);
+        outerMax = Math.max(1-internalMax, krotka.pId);
+        return Math.min(krotka.cId, outerMax);
     }
 }
