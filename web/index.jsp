@@ -46,7 +46,7 @@
 		   </div>
 		   <div id="main">
 		     <fieldset>
-		     	<legend>Cechy Twojego wymarzonego mieszkania </legend>
+		     	<legend>Cechy Twojego  JACEK TO PAŁA wymarzonego mieszkania </legend>
 		     		<ul>
 		     			<li>
 		     				<input type="checkbox" name="garage" value="garage" id="garage">
