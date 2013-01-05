@@ -27,10 +27,6 @@ public class Zadrozny {
         float internalMax = 0.0f;
         float outerMax = 0.0f;
         int position = -1;
-    
-        
-      
-        
        
         for (int i = 0; i < list.size(); i++) {
 
@@ -43,9 +39,10 @@ public class Zadrozny {
   
         }
        
+        //zabezpieczenie
         assert position!= -1 : "Nie znaleziono elementu o tym id";
 
-        outerMax = Math.max(1-internalMax, list.get(elementId).pId);
-        return Math.min(list.get(elementId).cId, outerMax);
+        outerMax = Math.max(1-internalMax, list.get(position).pId);
+        return Math.min(list.get(position).cId, outerMax);
     }
 }
