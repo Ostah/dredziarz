@@ -28,7 +28,8 @@ public class Logika {
             int distanceToSchool,
             int distanceToDowntown,
             String type,
-            String flatSize,
+            int lowArea, 
+            int highArea,
             boolean garage,
             boolean secured,
             boolean playground,
@@ -39,7 +40,8 @@ public class Logika {
         this.distanceToSchool = distanceToSchool;
         this.distanceToDowntown = distanceToDowntown;
         this.type = type;
-        this.flatSize = flatSize;
+        this.lowArea = lowArea;
+        this.highArea = highArea;
         this.garage = garage;
         this.secured = secured;
         this.playground = playground;
@@ -55,34 +57,6 @@ public class Logika {
         if (distanceToSchool != -1) {
             selectedDistanceToSchool = true;
         }
-
-        if (flatSize.equals("verySmallArea")) {
-
-            lowArea = verySmallArea[0];
-            highArea = verySmallArea[1];
-
-        } else if (flatSize.equals("smallArea")) {
-
-            lowArea = smallArea[0];
-            highArea = smallArea[1];
-
-        } else if (flatSize.equals("mediumArea")) {
-
-            lowArea = mediumArea[0];
-            highArea = mediumArea[1];
-
-        } else if (flatSize.equals("largeArea")) {
-
-            lowArea = largeArea[0];
-            highArea = largeArea[1];
-
-        } else if (flatSize.equals("veryLargeArea")) {
-
-            lowArea = veryLargeArea[0];
-            highArea = veryLargeArea[1];
-
-        }
-
         //calculating min and max prices
 
         minPrice = (int) (lowPrice - lowPrice * 0.5);
