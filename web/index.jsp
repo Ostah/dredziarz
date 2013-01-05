@@ -39,6 +39,23 @@
                                 <div><input type="radio" name="group1" value="koniecznaPowierzchnia"> Warunek konieczny <br> </div>
 			  </fieldset>
                         </div>
+                         <div id="main">
+                <fieldset>
+                    <legend>Której t-normy i s-normy użyć ?</legend><br>
+                    T-norma: 
+                        <select name="tnorm">
+                        <option value="minimum">Minimum</option>
+                        <option value="iloczyn">Iloczyn</option>
+                        <option value="t_lukasiewicz">T-norma Łukasiewicza</option>
+                        </select>
+                   S-norma:
+                        <select name="snorm">
+                        <option value="maximum">Maximum</option>
+                        <option value="suma">Suma probabilistyczna</option>
+                        <option value="s_lukasiewicz">S-konorma Łukasiewicza</option>
+                        </select>
+                </fieldset>
+            </div>  `   
 		   <div id="main">
 		     <fieldset>
 		     	<legend>Cechy Twojego wymarzonego mieszkania </legend>
@@ -87,34 +104,6 @@
 		    	 <input type="submit" value="Wyszukaj" />
 		    </div>
   </form>
-  <footer>
-
-                            </label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="secutityEstate" value="secutityEstate" id="secutityEstate">
-                            <label for="secutityEstate">Strzeżone osiedle</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="playground" value="playground" id="playground">
-                            <label for="playground">Plac zabaw na osiedlu</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" name="elevator" value="elevator" id="elevator">
-                            <label for="elevator">Winda</label>
-                        </li>
-                    </ul>
-                </fieldset>
-            </div>
-            <div id="sliderNavigation">
-                <input type="submit" value="Wyszukaj" />
-            </div>
-        </form>
-        <footer>
-
-        </footer>
-
-
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/libs/jquery.min.js"><\/script>')</script>
     </body>

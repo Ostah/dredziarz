@@ -125,7 +125,9 @@ public class fuzzyLogic extends HttpServlet {
                 secured, 
                 playground, 
                 elevator,
-                isMoney
+                isMoney,
+                request.getParameter("snorm"), 
+               request.getParameter("tnorm")
               );
 	
         List<Rekord> lista = logika.start();
