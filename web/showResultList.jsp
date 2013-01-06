@@ -53,7 +53,13 @@
                 </c:if>
             </ul>
 	</div>
-
+                <div class="requiredParams">
+                    <h4>Podsumowanie lingwistyczne</h2>
+                    <ul>
+                    <li>Większość mieszkań spełnia warunki zapytania bipolarnego: ${mostResults}%</li>
+                    <li>Mniejszość mieszkań spełnia warunki zapytania bipolarnego: ${(100-mostResults)}%</li>
+                    </ul>
+                </div>
 	<div class="searchParams">
 		<table id="tabelaWynikow">
 		<thead>
