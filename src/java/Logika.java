@@ -293,11 +293,17 @@ public class Logika {
             if(sNorm.equalsIgnoreCase("suma")) s_norm = Zadrozny.sNorm.SUMA_PROB;
             if(sNorm.equalsIgnoreCase("s_lukasiewicz")) s_norm = Zadrozny.sNorm.S_LUKASIEWICZ;
         
-            float wynik = Zadrozny.compute(krotki, krotka,t_norm, s_norm);
+            float wynik = Zadrozny.compute(krotki, krotka,t_norm, s_norm,false);
+            float wynikWarunkowy = 0.0f;
+            if(selectedDistanceToDowntown){
+                 wynikWarunkowy = Zadrozny.compute(krotki, krotka,t_norm, s_norm,true)*100;  
+            }
+           
             //System.out.println("Krotka:" + krotka.id + " wartosc:" + wynik);
             float wynik100 = wynik * 100;
             System.out.println("id: " + krotka.id + " bipolar: " + wynik100 + "%");
             krotka.bipolarPercent = (int) (wynik100);
+            krotka.conditionalPercent = (int)wynikWarunkowy;
             list1.get(count).compatibilityBipolar=(int) (wynik100);   
         }  
     }

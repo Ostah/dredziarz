@@ -21,15 +21,17 @@ public class Zadrozny {
 		MAKSIMUM, SUMA_PROB, S_LUKASIEWICZ
     }
     
-    static float compute(ArrayList<Krotka> list, Krotka krotka, tNorm t, sNorm s)
+    static float compute(ArrayList<Krotka> list, Krotka krotka, tNorm t, sNorm s, Boolean circumstancial)
     {
         
         float internalMax = 0.0f;
         float outerMax;
        
         for (int i = 0; i < list.size(); i++) {
-            //znajduje największą wartość z min(C(s),P(s))
-            float minimum = t_norm(list.get(i).cId, list.get(i).pId,t);
+            //znajduje największą wartość z min(C(s),P(s))    
+            float Cs = list.get(i).cId;
+            if(circumstancial) Cs = t_norm(krotka.isSameDistance(list.get(i)),list.get(i).cId,t);
+            float minimum = t_norm(Cs, list.get(i).pId,t);
             if (internalMax < minimum) internalMax = minimum;
         }
 

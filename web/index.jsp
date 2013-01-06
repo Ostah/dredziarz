@@ -95,6 +95,22 @@
                                 <input type="radio" name="group1" value="koniecznaPowierzchnia"> Warunek konieczny <br> </div>
 			  </fieldset>
                         </div>
+        <div id="main"><br>
+                          <fieldset>
+                              <legend>Kwerenda Warunkowa <input type="checkbox" name="closeToCenter" value="closeToCenter" id="closeToCenter"></legend><br>
+				     		
+				     		<label for="closeToCenter">Odległość od <b>centrum</b> 
+				     			<select name="req_distanceFromCenter">
+                                                        <option value="1">Bardzo Blisko</option>
+				     			<option value="2">Blisko</option>
+				     			<option value="3">Umiarkowanie</option>
+                                                        <option value="4">Daleko</option>
+                                                        <option value="5">Bardzo Daleko</option>
+				     			</select>
+				     		</label>
+                                                
+                          </fieldset>
+                        </div>
                          <div id="main"><br>
                 <fieldset>
                     <legend>Której t-normy i s-normy użyć ?</legend><br>
@@ -114,24 +130,12 @@
             </div>  `   
 		   <div id="main"><br>
 		     <fieldset>
-                         <legend>Cechy Twojego wymarzonego mieszkania: </legend><br>
+                         <legend>Cechy Twojego wymarzonego mieszkania: <br>(ignorowane w zapytaniach bipolarnych) </legend><br>
 		     		<ul>
 		     			<li>
 		     				<input type="checkbox" name="garage" value="garage" id="garage">
 		     				<label for="garage">Garaż</label>
 		     			</li>
-		     			<li>
-				     		<input type="checkbox" name="closeToCenter" value="closeToCenter" id="closeToCenter">
-				     		<label for="closeToCenter">Odległość od <b>centrum</b> 
-				     			<select name="req_distanceFromCenter">
-                                                        <option value="1">Bardzo Blisko</option>
-				     			<option value="2">Blisko</option>
-				     			<option value="3">Umiarkowanie</option>
-                                                        <option value="4">Daleko</option>
-                                                        <option value="5">Bardzo Daleko</option>
-				     			</select>
-				     		</label>
-						</li>
 						<li>
 				     		<input type="checkbox" name="closeToSchool" value="closeToSchool" id="closeToSchool">
 				     		<label for="closeToSchool">Odległość od <b>szkoły</b>
