@@ -4,34 +4,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
 
 public class Logic {
 
-    //area constans
-    public static final int[] verySmallArea = {10, 20};
-    public static final int[] smallArea = {20, 40};
-    public static final int[] mediumArea = {40, 70};
-    public static final int[] largeArea = {70, 120};
-    public static final int[] veryLargeArea = {120, 300};
     //distances
     public static final int[] closeSchoolDistance = {0, 500};
     public static final int[] mediumSchoolDistance = {500, 5000};
     public static final int[] farSchoolDistance = {5000, 20000};
     
-    int lowPrice, highPrice, distanceToSchool, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxTownDistance, lowSchoolDistance, highSchoolDistance, minSchoolDistance, maxSchoolDistance;
-    String type, flatSize, sNorm, tNorm;
-    boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney;
-    ArrayList krotki;
-    Tuple krotka;
-    int distance;
-
+    int lowPrice, highPrice, distanceToSchool, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxTownDistance, lowSchoolDistance, highSchoolDistance, minSchoolDistance, maxSchoolDistance,distanceToDowntown;
+    String  flatSize, sNorm, tNorm;
+    boolean garage, secured, playground, elevator, isConditionalQuery, selectedDistanceToSchool, isMoney;
+    ArrayList mTuplesList;
+    Tuple mTuple;
 
     public Logic(int lowPrice, int highPrice,
             int distanceToSchool,
-            int distance,
-            String type,
+            int distanceToDowntown,
             int lowArea, 
             int highArea,
             boolean garage,
@@ -43,11 +33,10 @@ public class Logic {
             String sNorm,
             String tNorm
             ) {
-        krotki = new ArrayList();
+        mTuplesList = new ArrayList();
         this.lowPrice = lowPrice;
         this.highPrice = highPrice;
         this.distanceToSchool = distanceToSchool;
-        this.type = type;
         this.lowArea = lowArea;
         this.highArea = highArea;
         this.garage = garage;
@@ -57,10 +46,8 @@ public class Logic {
         this.isMoney = isMoney;
         this.sNorm = sNorm;
         this.tNorm = tNorm;
-        this.distance = distance;
-
-        
-        selectedDistanceToDowntown = isDistance;
+        this.distanceToDowntown = distanceToDowntown;
+        this.isConditionalQuery = isDistance;
       
         if (distanceToSchool != -1) {
             selectedDistanceToSchool = true;
@@ -77,46 +64,35 @@ public class Logic {
                         lowSchoolDistance = farSchoolDistance[0];
                         highSchoolDistance = farSchoolDistance[1];
                         break;
-            }
-            
+            } 
         }
-        //calculating min and max prices
-
+        
+        //obliczanie minimalnej i maksymalnej ceny
         minPrice = (int) (lowPrice - lowPrice * 0.5f);
         maxPrice = (int) (highPrice + highPrice * 0.5f);
 
-        //calculating min and max areas
-
+        //obliczanie minimalnej i maksymalnej powierzchni
         minArea = (int) (lowArea - lowArea * 0.2f);
         maxArea = (int) (highArea + highArea * 0.2f);
         
-        //calculating min and max distances
-        
+        //obliczanie minimalnej i maksymalnej odległosci
         minSchoolDistance = (int) (lowSchoolDistance - lowSchoolDistance * 0.5f);
         maxSchoolDistance = (int) (highSchoolDistance + highSchoolDistance * 0.5f);
-        
     }
 
     List<Record> start() {
 
-        //calculating max distances to school
-
-
-        //calculating max distance to town
-
+        //połączenie z bazą danych
         Database dbConn = new Database();
         dbConn.createConnection();
-
         ResultSet rs = dbConn.getSpecificData("select * from apartment");//  where price > " + minPrice + "&& price < " + maxPrice + "&& size > " + minArea + "&& size < " + maxArea);
+       
         Record rekord;
-
-        //zapisanie pojedynczego rekordu
-
         List<Record> list = new ArrayList<Record>();
-
+        
+        //przejście po wszystkich rekordach otrzymanych z bazy
         try {
             while (rs.next()) {
-
                 rekord = new Record();
                 rekord.id = rs.getInt("id");
                 rekord.title = rs.getString("title");
@@ -132,19 +108,15 @@ public class Logic {
                 rekord.elevator = rs.getBoolean("elevator");
                 rekord.playground = rs.getBoolean("playground");
                 rekord.securityEstate = rs.getBoolean("secutityEstate");
-
                 rekord.compatibility = calculatePercentages(rekord);
-
                 list.add(rekord);
-
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         
-        obliczBipolar(list);
-         
+        computeBipolar(list);
+        
         List<Record> finalList = new ArrayList<Record>();
         for(int j=0;j<list.size();j++){
             Record r = list.get(j);
@@ -157,17 +129,14 @@ public class Logic {
         return finalList;
     }
 
+    // logika zapytań rozmytych (nie bipolarne)
     int calculatePercentages(Record rekord) {
-
-        krotka = new Tuple();
         
+        mTuple = new Tuple();
         int percent = 0;
         int moneyPercent = 0;
         int areaPercent = 0;
-        int distancePercent = 0;
-
         int schoolDistancePercent = 0;
-        int townDistancePercent = 0;
 
         if (rekord.price > maxPrice || rekord.price < minPrice) {
             moneyPercent = 0;
@@ -271,10 +240,10 @@ public class Logic {
         }
 
 
-        if (selectedDistanceToDowntown) { // w ogole jest zaznaczone
-            krotka.distance = distance;
+        if (isConditionalQuery) { // w ogole jest zaznaczone
+            mTuple.distance = distanceToDowntown;
         } else {
-            krotka.distance = 0;
+            mTuple.distance = 0;
         }
 
         if (garage && rekord.garage != garage) {
@@ -294,30 +263,30 @@ public class Logic {
             rekord.info += "<br /><img src='img/falseSmall.png' /> Mieszkanie <b>nie ma placu zabaw</b>";
         }
 
-        krotka.id = rekord.id;
+        mTuple.id = rekord.id;
         if (isMoney) {
-            krotka.cId = (float) (moneyPercent / 100.0);
-            krotka.pId = (float) (areaPercent / 100.0);
+            mTuple.cId = (float) (moneyPercent / 100.0);
+            mTuple.pId = (float) (areaPercent / 100.0);
         } else {
-            krotka.pId = (float) (moneyPercent / 100.0);
-            krotka.cId = (float) (areaPercent / 100.0);
+            mTuple.pId = (float) (moneyPercent / 100.0);
+            mTuple.cId = (float) (areaPercent / 100.0);
         }
         
-        krotka.fuzzyPercent = percent;
-        krotki.add(krotka);
+        mTuple.fuzzyPercent = percent;
+        mTuplesList.add(mTuple);
         
         
-        return krotka.fuzzyPercent;
+        return mTuple.fuzzyPercent;
     }
 
-    private void obliczBipolar(List<Record> list1) {
-        Enumeration e = Collections.enumeration(krotki);
+    //logika bipolarna
+    private void computeBipolar(List<Record> list1) {
+        Enumeration e = Collections.enumeration(mTuplesList);
 
         int count =-1;
         while(e.hasMoreElements()){
             count++;
-            Tuple krotka = (Tuple) (e.nextElement());
-        
+            Tuple localTuple = (Tuple) (e.nextElement());
         
             Zadrozny.tNorm t_norm=Zadrozny.tNorm.MINIMUM;
             Zadrozny.sNorm s_norm=Zadrozny.sNorm.MAKSIMUM;
@@ -327,19 +296,19 @@ public class Logic {
             if(sNorm.equalsIgnoreCase("suma")) s_norm = Zadrozny.sNorm.SUMA_PROB;
             if(sNorm.equalsIgnoreCase("s_lukasiewicz")) s_norm = Zadrozny.sNorm.S_LUKASIEWICZ;
         
-            float wynik = Zadrozny.compute(krotki, krotka,t_norm, s_norm,false);
-            int wynikWarunkowy = -1;
-            if(selectedDistanceToDowntown){
-                 wynikWarunkowy = (int)(Zadrozny.compute(krotki, krotka,t_norm, s_norm,true)*100);  
-            }
+            float result = Zadrozny.compute(mTuplesList, localTuple,t_norm, s_norm,false);
+            int resultConditional = -1;
            
-            //System.out.println("Krotka:" + krotka.id + " wartosc:" + wynik);
-            float wynik100 = wynik * 100;
-            System.out.println("id: " + krotka.id + " bipolar: " + wynik100 + "%");
-            krotka.bipolarPercent = (int) (wynik100);
-            krotka.conditionalPercent = wynikWarunkowy;
-            list1.get(count).compatibilityBipolar=(int) (wynik100);  
-            list1.get(count).compatibilityConditional = wynikWarunkowy; 
+            if(isConditionalQuery){
+                 resultConditional = (int)(Zadrozny.compute(mTuplesList, localTuple,t_norm, s_norm,true)*100);  
+            }
+          
+            float result100 = result * 100;
+            System.out.println("id: " + localTuple.id + " bipolar: " + result100 + "%");
+            localTuple.bipolarPercent = (int) (result100);
+            localTuple.conditionalPercent = resultConditional;
+            list1.get(count).compatibilityBipolar=(int) (result100);  
+            list1.get(count).compatibilityConditional = resultConditional; 
         }  
     }
 }

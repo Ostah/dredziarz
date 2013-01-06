@@ -1,17 +1,20 @@
+
 import java.sql.*;
 
 public class Database {
+
     private Connection connection;
     private static String databaseName = "c10_fuzzy";
     private static String databaseUsername = "c10_fuzzy";
     private static String databasePassword = "brawojasiu1";
     private static String driver = "com.mysql.jdbc.Driver";
     static Statement query = null;
-    
+
     public Connection getConnection() {
         createConnection();
         return connection;
     }
+
     public void createConnection() {
         if (connection == null) {
             try {
@@ -25,17 +28,17 @@ public class Database {
             }
         }
     }
-    
-    public ResultSet getSpecificData (String what) {
-		ResultSet result = null;
-		
-		try {
-			query = connection.createStatement();
-			result = query.executeQuery(what);
-                        System.out.println(what);
-		} catch (SQLException ex) {
-			System.out.println("catch");		
-		}
-		return result;
-	}
+
+    public ResultSet getSpecificData(String what) {
+        ResultSet result = null;
+
+        try {
+            query = connection.createStatement();
+            result = query.executeQuery(what);
+            System.out.println(what);
+        } catch (SQLException ex) {
+            System.out.println("catch");
+        }
+        return result;
+    }
 }
