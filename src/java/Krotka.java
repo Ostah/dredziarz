@@ -14,4 +14,5 @@ public class Krotka
     float pId;
     int fuzzyPercent;
     int bipolarPercent;
+    int distance;
 }

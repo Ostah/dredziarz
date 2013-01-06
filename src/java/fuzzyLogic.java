@@ -39,7 +39,7 @@ public class fuzzyLogic extends HttpServlet {
         
         int distanceToDowntown = -1;
         int distanceToSchool  = -1;
-        int priceMax=-1, priceMin=-1, areaMax=-1, areaMin=-1, distanceMax=-1, distanceMin=-1;
+        int priceMax=-1, priceMin=-1, areaMax=-1, areaMin=-1, distance=-1;
         String type = null;
         String[] estateType;
          HttpSession session = request.getSession(true);
@@ -79,12 +79,7 @@ public class fuzzyLogic extends HttpServlet {
         
         nr = request.getParameter("req_distanceFromCenter");
         if (nr != null) {
-            String b = "odleglosc" + nr + "min";
-            String attr = (String) session.getAttribute(b);
-            distanceMin = Integer.valueOf(attr);
-            b = "odleglosc" + nr + "max";
-            attr = (String) session.getAttribute(b);
-            distanceMax = Integer.valueOf(attr);
+            distance = Integer.getInteger(nr);
         }
 
 
@@ -150,8 +145,7 @@ public class fuzzyLogic extends HttpServlet {
                priceMin, 
                 priceMax, 
                 distanceToSchool, 
-                distanceMin, 
-                distanceMax,
+                distance,
                 type, 
                 areaMin, 
                 areaMax, 
@@ -160,8 +154,9 @@ public class fuzzyLogic extends HttpServlet {
                 playground, 
                 elevator,
                 isMoney,
+                selectedDistanceToDowntown,
                 request.getParameter("snorm"), 
-               request.getParameter("tnorm")
+                request.getParameter("tnorm")
               );
 	
         List<Rekord> lista = logika.start();
