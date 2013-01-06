@@ -31,6 +31,7 @@ public class Zadrozny {
             
             //znajduje największą wartość z min(C(s),P(s))    
             float Cs = list.get(i).cId;
+            float isSameDist = tuple.isSameDistance(list.get(i));
             if(circumstancial) Cs = t_norm(tuple.isSameDistance(list.get(i)),list.get(i).cId,t);
             float minimum = t_norm(Cs, list.get(i).pId,t);
             if (internalMax < minimum) internalMax = minimum;

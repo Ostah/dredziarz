@@ -91,11 +91,16 @@ public class Logic {
         List<Record> list = new ArrayList<Record>();
         
         //przejście po wszystkich rekordach otrzymanych z bazy
+        int i=-1;
         try {
             while (rs.next()) {
+                i++;
                 rekord = new Record();
                 rekord.id = rs.getInt("id");
                 rekord.title = rs.getString("title");
+                if(rekord.title.equalsIgnoreCase("Bungalow")){
+                    System.out.println("found: "+String.valueOf(i));
+                }
                 rekord.city = rs.getString("city");
                 rekord.address = rs.getString("address");
                 rekord.price = rs.getInt("price");
@@ -286,8 +291,11 @@ public class Logic {
         int count =-1;
         while(e.hasMoreElements()){
             count++;
+            if(count == 11){
+                System.out.print("catch");
+            }
             Tuple localTuple = (Tuple) (e.nextElement());
-        
+            System.out.println("Tuple: "+ localTuple.id+" "+localTuple.distance);
             Zadrozny.tNorm t_norm=Zadrozny.tNorm.MINIMUM;
             Zadrozny.sNorm s_norm=Zadrozny.sNorm.MAXIMUM;
         
