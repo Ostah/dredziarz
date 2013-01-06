@@ -77,10 +77,13 @@ public class fuzzyLogic extends HttpServlet {
             areaMax = Integer.valueOf(attr);
         }
         
-        {
-            nr = request.getParameter("req_distanceFromCenter");
-            distance = Integer.getInteger(nr);
-        }
+                        nr = request.getParameter("req_distanceFromCenter");
+
+            if (nr != null) {
+                distance = Integer.valueOf(nr);
+            }
+        
+        
         
         
         if (request.getParameter("estateType") != null) {
