@@ -31,14 +31,26 @@
 		  <div id="main">
 			  <fieldset>
 			  	<legend>Jaki masz budżet na zakup nieruchomości ?</legend>		
-			  			Od <input name="minBudget" id="minBudget" type="number"> zł do <input name="maxBudget" id="maxBudget" type="number"> zł 
+			  			<select name="budget">
+                                                        <option value="1">Bardzo Tanie</option>
+				     			<option value="2">Tanie</option>
+				     			<option value="3">Normalne</option>
+                                                        <option value="4">Drogie</option>
+                                                        <option value="5">Bardzo Drogie</option>
+				     			</select>
                                                 <div><input type="radio" name="group1" value="koniecznaKasa" checked> Warunek konieczny <br> </div>
 			  </fieldset>
 		   </div>
 			<div id="main">
 			  <fieldset>
 			  	<legend>Jaka powierzchnia Cię interesuje ?</legend>
-                                Od <input name="minArea" id="minArea" type="number"> m<sup>2</sup> do <input name="maxArea" id="maxArea" type="number"> m<sup>2</sup>
+                              <select name="area">
+                                                        <option value="1">Bardzo Mała</option>
+				     			<option value="2">Mała</option>
+				     			<option value="3">Normalna</option>
+                                                        <option value="4">Duża</option>
+                                                        <option value="5">Bardzo Duża</option>
+				     			</select>
                                 <div><input type="radio" name="group1" value="koniecznaPowierzchnia"> Warunek konieczny <br> </div>
 			  </fieldset>
                         </div>
@@ -71,9 +83,11 @@
 				     		<input type="checkbox" name="closeToCenter" value="closeToCenter" id="closeToCenter">
 				     		<label for="closeToCenter">Odległość od <b>centrum</b> 
 				     			<select name="req_distanceFromCenter">
-				     				<option value="2">Blisko</option>
-				     				<option value="5">Umiarkowana</option>
-				     				<option value="15">Daleko</option>
+                                                        <option value="1">Bardzo Blisko</option>
+				     			<option value="2">Blisko</option>
+				     			<option value="3">Umiarkowanie</option>
+                                                        <option value="4">Daleko</option>
+                                                        <option value="5">Bardzo Daleko</option>
 				     			</select>
 				     		</label>
 						</li>
@@ -81,9 +95,9 @@
 				     		<input type="checkbox" name="closeToSchool" value="closeToSchool" id="closeToSchool">
 				     		<label for="closeToSchool">Odległość od <b>szkoły</b>
 				     		<select name="req_distanceFromSchool">
-				     			<option value="2">Blisko</option>
-				     			<option value="5">Umiarkowana</option>
-				     			<option value="15">Daleko</option>
+				     			<option value="1">Blisko</option>
+				     			<option value="2">Umiarkowana</option>
+				     			<option value="3">Daleko</option>
 				     		</select>
 				     		
 				     		</label>
