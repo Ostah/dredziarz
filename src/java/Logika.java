@@ -28,8 +28,7 @@ public class Logika {
 
     public Logika(int lowPrice, int highPrice,
             int distanceToSchool,
-            int distanceMin,
-            int distanceMax,
+            int distance,
             String type,
             int lowArea, 
             int highArea,
@@ -38,6 +37,7 @@ public class Logika {
             boolean playground,
             boolean elevator,
             boolean isMoney,
+            boolean isDistance,
             String sNorm,
             String tNorm
             ) {
@@ -61,9 +61,8 @@ public class Logika {
         System.out.println("Low cena: " + lowPrice);
         System.out.println("High cena: " + highPrice);
 */      
-        if (distanceToDowntown != -1) {
-            selectedDistanceToDowntown = true;
-        }
+        selectedDistanceToDowntown = isDistance;
+      
 
         if (distanceToSchool != -1) {
             selectedDistanceToSchool = true;
@@ -89,7 +88,6 @@ public class Logika {
 
         //calculating max distance to town
 
-        maxTownDistance = (int) (distanceToDowntown + 5);
         Database dbConn = new Database();
         dbConn.createConnection();
 
@@ -235,30 +233,11 @@ public class Logika {
 
                 percent = (percent + schoolDistancePercent) / 2;
                 rekord.info += "<br /><img src='img/falseSmall.png' /> Mieszkanie jest <b>daleko od szkoły</b>";
-
-
             }
         }
 
         if (selectedDistanceToDowntown) { // w ogole jest zaznaczone
-            if (rekord.blocksFromCenter <= distanceToDowntown) ;//			
-            else if (rekord.closeToSchool <= maxSchoolDistance) {
-                int x1 = maxTownDistance;
-                int y1 = 0;
-
-                int x2 = distanceToDowntown;
-                int y2 = 1;
-
-                float a = (float) (y2 - y1) / (x2 - x1);
-                float b = (float) y1 - a * x1;
-
-                townDistancePercent = (int) ((a * rekord.blocksFromCenter + b) * 100);
-
-                percent = (percent + townDistancePercent) / 2;
-                rekord.info += "<br /><img src='img/falseSmall.png' /> Mieszkanie jest <b>daleko od centrum</b>";
-
-
-            }
+            krotka.distance = 0;
         }
 
         if (garage && rekord.garage != garage) {
