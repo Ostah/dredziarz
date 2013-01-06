@@ -67,6 +67,11 @@
                                 <th>
                                         Zgodność bipolarna
                                 </th>
+                                <%  
+                                if((Boolean)request.getAttribute("isConditional")){                               
+                                    out.print("<th>Zgodność warunkowa</th>");
+                                }
+                                        %>
 				<th>
 					Adres
 				</th>

@@ -168,6 +168,7 @@ public class fuzzyLogic extends HttpServlet {
         request.setAttribute("maxArea", areaMax);
         request.setAttribute("minCena", priceMin);
         request.setAttribute("maxCena", priceMax);
+        request.setAttribute("isConditional", selectedDistanceToDowntown);
         getServletContext().getRequestDispatcher("/showResultList.jsp").forward(request, response);
 
     }
