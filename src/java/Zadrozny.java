@@ -21,7 +21,7 @@ public class Zadrozny {
 		MAKSIMUM, SUMA_PROB, S_LUKASIEWICZ
     }
     
-    static float compute(ArrayList<Krotka> list, Krotka krotka, tNorm t, sNorm s, Boolean circumstancial)
+    static float compute(ArrayList<Tuple> list, Tuple krotka, tNorm t, sNorm s, Boolean circumstancial)
     {
         
         float internalMax = 0.0f;

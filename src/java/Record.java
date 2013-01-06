@@ -1,4 +1,4 @@
-public class Rekord implements Comparable<Rekord>{
+public class Record implements Comparable<Record>{
 	public int id;
 	public String title;
 	public String city;
@@ -23,7 +23,7 @@ public class Rekord implements Comparable<Rekord>{
 		return true;
 	}
 
-	public int compareTo(Rekord compareObject)
+	public int compareTo(Record compareObject)
     {
         if(compatibilityConditional==-1)
         {

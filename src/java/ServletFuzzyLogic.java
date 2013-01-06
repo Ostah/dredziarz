@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  * @author piotrpaul
  */
 @WebServlet(name = "fuzzyLogic", urlPatterns = {"/fuzzyLogic"})
-public class fuzzyLogic extends HttpServlet {
+public class ServletFuzzyLogic extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -143,7 +143,7 @@ public class fuzzyLogic extends HttpServlet {
         }
        
       
-	Logika logika = new Logika(
+	Logic logika = new Logic(
                priceMin, 
                 priceMax, 
                 distanceToSchool, 
@@ -161,7 +161,7 @@ public class fuzzyLogic extends HttpServlet {
                 request.getParameter("tnorm")
               );
 	
-        List<Rekord> lista = logika.start();
+        List<Record> lista = logika.start();
         
         request.setAttribute("resultList", lista);
         request.setAttribute("minArea", areaMin);

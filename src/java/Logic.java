@@ -7,7 +7,7 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 
-public class Logika {
+public class Logic {
 
     //area constans
     public static final int[] verySmallArea = {10, 20};
@@ -24,11 +24,11 @@ public class Logika {
     String type, flatSize, sNorm, tNorm;
     boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney;
     ArrayList krotki;
-    Krotka krotka;
+    Tuple krotka;
     int distance;
 
 
-    public Logika(int lowPrice, int highPrice,
+    public Logic(int lowPrice, int highPrice,
             int distanceToSchool,
             int distance,
             String type,
@@ -97,7 +97,7 @@ public class Logika {
         
     }
 
-    List<Rekord> start() {
+    List<Record> start() {
 
         //calculating max distances to school
 
@@ -108,38 +108,36 @@ public class Logika {
         dbConn.createConnection();
 
         ResultSet rs = dbConn.getSpecificData("select * from apartment");//  where price > " + minPrice + "&& price < " + maxPrice + "&& size > " + minArea + "&& size < " + maxArea);
-
-        int i = 0;
-        Rekord[] rekord = new Rekord[30];
+        Record rekord;
 
         //zapisanie pojedynczego rekordu
 
-        List<Rekord> list = new ArrayList<Rekord>();
+        List<Record> list = new ArrayList<Record>();
 
         try {
             while (rs.next()) {
 
-                rekord[i] = new Rekord();
-                rekord[i].id = rs.getInt("id");
-                rekord[i].title = rs.getString("title");
-                rekord[i].city = rs.getString("city");
-                rekord[i].address = rs.getString("address");
-                rekord[i].price = rs.getInt("price");
-                rekord[i].area = rs.getInt("size");
-                rekord[i].year = rs.getInt("year");
-                rekord[i].onWhatFloor = rs.getInt("onwhatfloor");
-                rekord[i].garage = rs.getBoolean("garage");
-                rekord[i].blocksFromCenter = rs.getInt("blocksFromCenter");
-                rekord[i].closeToSchool = rs.getInt("closeToSchool");
-                rekord[i].elevator = rs.getBoolean("elevator");
-                rekord[i].playground = rs.getBoolean("playground");
-                rekord[i].securityEstate = rs.getBoolean("secutityEstate");
+                rekord = new Record();
+                rekord.id = rs.getInt("id");
+                rekord.title = rs.getString("title");
+                rekord.city = rs.getString("city");
+                rekord.address = rs.getString("address");
+                rekord.price = rs.getInt("price");
+                rekord.area = rs.getInt("size");
+                rekord.year = rs.getInt("year");
+                rekord.onWhatFloor = rs.getInt("onwhatfloor");
+                rekord.garage = rs.getBoolean("garage");
+                rekord.blocksFromCenter = rs.getInt("blocksFromCenter");
+                rekord.closeToSchool = rs.getInt("closeToSchool");
+                rekord.elevator = rs.getBoolean("elevator");
+                rekord.playground = rs.getBoolean("playground");
+                rekord.securityEstate = rs.getBoolean("secutityEstate");
 
-                rekord[i].compatibility = calculatePercentages(rekord[i]);
+                rekord.compatibility = calculatePercentages(rekord);
 
-                list.add(rekord[i]);
+                list.add(rekord);
 
-                i++;
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -147,9 +145,9 @@ public class Logika {
         
         obliczBipolar(list);
          
-        List<Rekord> finalList = new ArrayList<Rekord>();
+        List<Record> finalList = new ArrayList<Record>();
         for(int j=0;j<list.size();j++){
-            Rekord r = list.get(j);
+            Record r = list.get(j);
             if(r.compatibility!=0 || r.compatibilityBipolar!=0 || (r.compatibilityConditional !=0 && r.compatibilityConditional!=-1)){
                 finalList.add(r);
             }
@@ -159,9 +157,9 @@ public class Logika {
         return finalList;
     }
 
-    int calculatePercentages(Rekord rekord) {
+    int calculatePercentages(Record rekord) {
 
-        krotka = new Krotka();
+        krotka = new Tuple();
         
         int percent = 0;
         int moneyPercent = 0;
@@ -312,13 +310,13 @@ public class Logika {
         return krotka.fuzzyPercent;
     }
 
-    private void obliczBipolar(List<Rekord> list1) {
+    private void obliczBipolar(List<Record> list1) {
         Enumeration e = Collections.enumeration(krotki);
 
         int count =-1;
         while(e.hasMoreElements()){
             count++;
-            Krotka krotka = (Krotka) (e.nextElement());
+            Tuple krotka = (Tuple) (e.nextElement());
         
         
             Zadrozny.tNorm t_norm=Zadrozny.tNorm.MINIMUM;

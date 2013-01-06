@@ -7,7 +7,7 @@
  *
  * @author Jacek
  */
-public class Krotka 
+public class Tuple 
 {
     int id;
     float cId;
@@ -17,7 +17,7 @@ public class Krotka
     int bipolarPercent;
     int distance;
     
-    public float isSameDistance(Krotka k){
+    public float isSameDistance(Tuple k){
         if(k.distance == distance) return 1.0f;
         return 0.0f;
     }

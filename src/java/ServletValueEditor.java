@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Ostah
  */
-public class valueEditor extends HttpServlet {
+public class ServletValueEditor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
