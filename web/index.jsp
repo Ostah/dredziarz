@@ -71,7 +71,7 @@
   <form method="post" action="fuzzyLogic">
 		  <div id="main"><br>
 			  <fieldset>
-			  	<legend>Jaki masz budżet na zakup nieruchomości ?</legend><br>		
+			  	<legend>Jaki przedział cenowy mieszkania Cię interesuje ?</legend><br>		
 			  			<div><select name="budget">
                                                         <option value="1">Bardzo Tanie</option>
 				     			<option value="2">Tanie</option>
@@ -120,7 +120,7 @@
                         <option value="iloczyn">Iloczyn</option>
                         <option value="t_lukasiewicz">T-norma Łukasiewicza</option>
                         </select>
-                   S-norma:
+                    S-norma:
                         <select name="snorm">
                         <option value="maximum">Maximum</option>
                         <option value="suma">Suma probabilistyczna</option>
@@ -130,7 +130,7 @@
             </div>  `   
 		   <div id="main"><br>
 		     <fieldset>
-                         <legend>Cechy Twojego wymarzonego mieszkania: <br>(ignorowane w zapytaniach bipolarnych) </legend><br>
+                         <legend>Cechy Twojego wymarzonego mieszkania: <br><b>(nie wpływa na zgodność w zapytaniach bipolarnych!)</b> </legend><br>
 		     		<ul>
 		     			<li>
 		     				<input type="checkbox" name="garage" value="garage" id="garage">

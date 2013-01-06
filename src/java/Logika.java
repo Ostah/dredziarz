@@ -233,7 +233,7 @@ public class Logika {
             rekord.info += "<br /><img src='img/falseSmall.png' /> Mieszkanie jest <b>mniejsze</b> niż oczekiwano ";
         }
 
-        if (selectedDistanceToSchool)
+        if (selectedDistanceToSchool) {
         if (rekord.closeToSchool > maxSchoolDistance || rekord.closeToSchool < minSchoolDistance) {
             areaPercent = 0;
         } else if (rekord.closeToSchool >= lowSchoolDistance && rekord.closeToSchool <= highSchoolDistance) {
@@ -265,6 +265,7 @@ public class Logika {
             rekord.info += "<br /><img src='img/trueSmall.png' /> Szkoła jest <b>bliżej</b> niż oczekiwano ";
         }
         
+        }
         if (selectedDistanceToSchool) {
             percent = (int) ((moneyPercent + areaPercent + schoolDistancePercent) / 3.0);
         } else {
