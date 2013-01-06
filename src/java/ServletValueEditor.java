@@ -75,8 +75,7 @@ public class ServletValueEditor extends HttpServlet {
                      session.setAttribute("odleglosc"+String.valueOf(i)+"max",tmp);
                  }
             }
-            
-            out.close();
+           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

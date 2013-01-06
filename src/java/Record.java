@@ -19,9 +19,7 @@ public class Record implements Comparable<Record>{
         public int compatibilityConditional;
 	public String info = "";
 	
-	boolean calculateCompatibility() {
-		return true;
-	}
+	
 
 	public int compareTo(Record compareObject)
     {
@@ -44,7 +42,7 @@ public class Record implements Comparable<Record>{
         }
        
     }
-        public String checkTrue(boolean param) {
+        public String getImage(boolean param) {
              if(param) {
                  return "<img src='img/true.png' />";
              } else {
@@ -60,8 +58,8 @@ public class Record implements Comparable<Record>{
                 "<td class='important'>" + this.compatibilityBipolar + " %</td>"+conditional+
                  "<td>" +this.address +" " +this.city + "</td><td> " + this.area + " m<sup>2</sup> </td><td> " +
                 this.price + " zł</td><td>" + this.blocksFromCenter + " m</td><td>" +
-                this.closeToSchool + " m</td><td>" + checkTrue(elevator) + " </td><td> " +
-                checkTrue(playground) + "</td><td>" + checkTrue(securityEstate) + "</td><td class='infos'>" + this.info +"</td>";
+                this.closeToSchool + " m</td><td>" + getImage(elevator) + " </td><td> " +
+                getImage(playground) + "</td><td>" + getImage(securityEstate) + "</td><td class='infos'>" + this.info +"</td>";
     }
         
 }
