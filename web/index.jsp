@@ -25,36 +25,36 @@
   	  </h2>
   </div>
   <div id="sliderNavigation">
- <a href="/Fuzzy/edit.jsp">Edycja przedziałów</a>
+     <a href="/Fuzzy/edit.jsp">Edycja przedziałów</a>
   </div>
   <form method="post" action="fuzzyLogic">
-		  <div id="main">
+		  <div id="main"><br>
 			  <fieldset>
-			  	<legend>Jaki masz budżet na zakup nieruchomości ?</legend>		
-			  			<select name="budget">
+			  	<legend>Jaki masz budżet na zakup nieruchomości ?</legend><br>		
+			  			<div><select name="budget">
                                                         <option value="1">Bardzo Tanie</option>
 				     			<option value="2">Tanie</option>
 				     			<option value="3">Normalne</option>
                                                         <option value="4">Drogie</option>
                                                         <option value="5">Bardzo Drogie</option>
 				     			</select>
-                                                <div><input type="radio" name="group1" value="koniecznaKasa" checked> Warunek konieczny <br> </div>
+                                                <input type="radio" name="group1" value="koniecznaKasa" checked> Warunek konieczny <br> </div>
 			  </fieldset>
 		   </div>
-			<div id="main">
+			<div id="main"><br>
 			  <fieldset>
-			  	<legend>Jaka powierzchnia Cię interesuje ?</legend>
-                              <select name="area">
+			  	<legend>Jaka powierzchnia Cię interesuje ?</legend><br>
+                              <div><select name="area">
                                                         <option value="1">Bardzo Mała</option>
 				     			<option value="2">Mała</option>
 				     			<option value="3">Normalna</option>
                                                         <option value="4">Duża</option>
                                                         <option value="5">Bardzo Duża</option>
 				     			</select>
-                                <div><input type="radio" name="group1" value="koniecznaPowierzchnia"> Warunek konieczny <br> </div>
+                                <input type="radio" name="group1" value="koniecznaPowierzchnia"> Warunek konieczny <br> </div>
 			  </fieldset>
                         </div>
-                         <div id="main">
+                         <div id="main"><br>
                 <fieldset>
                     <legend>Której t-normy i s-normy użyć ?</legend><br>
                     T-norma: 
@@ -71,9 +71,9 @@
                         </select>
                 </fieldset>
             </div>  `   
-		   <div id="main">
+		   <div id="main"><br>
 		     <fieldset>
-		     	<legend>Cechy Twojego wymarzonego mieszkania </legend>
+                         <legend>Cechy Twojego wymarzonego mieszkania: </legend><br>
 		     		<ul>
 		     			<li>
 		     				<input type="checkbox" name="garage" value="garage" id="garage">

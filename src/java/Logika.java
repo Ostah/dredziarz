@@ -73,30 +73,11 @@ public class Logika {
 
         //calculating min and max areas
 
-        minArea = (int) (lowArea - lowArea*0.2f);
-        maxArea = (int) (highArea + highArea*0.2f);
+        minArea = (int) (lowArea - lowArea * 0.2f);
+        maxArea = (int) (highArea + highArea * 0.2f);
 
     }
 
-    /////////////IN////////////////
-	/*
-    String type = "";
-    int lowPrice = 200000;
-    int highPrice = 312000;
-    int lowArea = smallArea[0];
-    int highArea = smallArea[1];
-    
-    boolean garage = false;
-    boolean secured = false;
-    boolean playground = false;
-    boolean elevator = false;
-    
-    boolean selectedDistanceToSchool = true;
-    int distanceToSchool = closeDistance; //ustalone na bliski
-    
-    boolean selectedDistanceToDowntown = false;
-    int distanceToDowntown;
-     */
     List<Rekord> start() {
 
 
@@ -142,9 +123,7 @@ public class Logika {
 
                 rekord[i].compatibility = calculatePercentages(rekord[i]);
 
-               // if (rekord[i].compatibility >= 15) {
-                    list.add(rekord[i]);
-              //  }
+                list.add(rekord[i]);
 
                 i++;
             }
@@ -156,21 +135,8 @@ public class Logika {
         obliczBipolar(list);
 
         Collections.sort(list);
-        
-        
-        
-        
+    
         return list;
-/*
-        Iterator<Rekord> itr = list.iterator();
-        System.out.println("id\tcena\tmetraz\tzgodnosc \tinfo");
-        while (itr.hasNext()) {
-            Rekord rek = itr.next();
-            System.out.println(rek.id + "\t" + rek.price + "\t" + rek.area + "m2\t" + rek.compatibility + "%     \t" + rek.info);
-
-        }
-        System.out.println();
- */
     }
 
     int calculatePercentages(Rekord rekord) {
