@@ -19,7 +19,7 @@ public class Logika {
     public static final int closeDistance = 2;
     public static final int mediumDistance = 5;
     public static final int farDistance = 15;
-    int lowPrice, highPrice, distanceToSchool, distanceToDowntown, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxSchoolDistance, maxTownDistance;
+    int lowPrice, highPrice, distanceToSchool, distanceMin, distanceMax, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxSchoolDistance, maxTownDistance;
     String type, flatSize, sNorm, tNorm;
     boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney;
     ArrayList krotki;
@@ -28,7 +28,8 @@ public class Logika {
 
     public Logika(int lowPrice, int highPrice,
             int distanceToSchool,
-            int distanceToDowntown,
+            int distanceMin,
+            int distanceMax,
             String type,
             int lowArea, 
             int highArea,
@@ -44,7 +45,8 @@ public class Logika {
         this.lowPrice = lowPrice;
         this.highPrice = highPrice;
         this.distanceToSchool = distanceToSchool;
-        this.distanceToDowntown = distanceToDowntown;
+        this.distanceMin = distanceMin;
+        this.distanceMax = distanceMax;
         this.type = type;
         this.lowArea = lowArea;
         this.highArea = highArea;
