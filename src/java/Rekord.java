@@ -25,12 +25,24 @@ public class Rekord implements Comparable<Rekord>{
 
 	public int compareTo(Rekord compareObject)
     {
-        if (compatibility < compareObject.compatibility)
-            return 1;
-        else if (compatibility == compareObject.compatibility)
-            return 0;
-        else
-            return -1;
+        if(compatibilityConditional==-1)
+        {
+            if (compatibilityBipolar < compareObject.compatibilityBipolar)
+                return 1;
+            else if (compatibilityBipolar == compareObject.compatibilityBipolar)
+                return 0;
+            else
+                return -1; 
+        }
+        else{
+            if (compatibilityConditional < compareObject.compatibilityConditional)
+                return 1;
+            else if (compatibilityConditional == compareObject.compatibilityConditional)
+                return 0;
+            else
+                return -1; 
+        }
+       
     }
         public String checkTrue(boolean param) {
              if(param) {

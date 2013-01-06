@@ -129,12 +129,18 @@ public class Logika {
             e.printStackTrace();
         }
         
-        
         obliczBipolar(list);
-
-        Collections.sort(list);
+         
+        List<Rekord> finalList = new ArrayList<Rekord>();
+        for(int j=0;j<list.size();j++){
+            Rekord r = list.get(j);
+            if(r.compatibility!=0 || r.compatibilityBipolar!=0 || (r.compatibilityConditional !=0 && r.compatibilityConditional!=-1)){
+                finalList.add(r);
+            }
+        }
     
-        return list;
+        Collections.sort(finalList);
+        return finalList;
     }
 
     int calculatePercentages(Rekord rekord) {
