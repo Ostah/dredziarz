@@ -20,7 +20,7 @@ public class Logika {
     public static final int[] mediumSchoolDistance = {5, 10};
     public static final int[] farSchoolDistance = {15, 30};
     
-    int lowPrice, highPrice, distanceToSchool, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxSchoolDistance, maxTownDistance;
+    int lowPrice, highPrice, distanceToSchool, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxTownDistance, lowSchoolDistance, highSchoolDistance, minSchoolDistance, maxSchoolDistance;
     String type, flatSize, sNorm, tNorm;
     boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney;
     ArrayList krotki;
@@ -64,8 +64,20 @@ public class Logika {
       
         if (distanceToSchool != -1) {
             selectedDistanceToSchool = true;
-            
-            
+            switch (distanceToSchool) {
+                case 1:
+                        lowSchoolDistance = closeSchoolDistance[0];
+                        highSchoolDistance = closeSchoolDistance[1];
+                        break;
+                case 2:
+                        lowSchoolDistance = mediumSchoolDistance[0];
+                        highSchoolDistance = mediumSchoolDistance[1];
+                        break;
+                case 3:
+                        lowSchoolDistance = farSchoolDistance[0];
+                        highSchoolDistance = farSchoolDistance[1];
+                        break;
+            }
             
         }
         //calculating min and max prices
@@ -77,13 +89,18 @@ public class Logika {
 
         minArea = (int) (lowArea - lowArea * 0.2f);
         maxArea = (int) (highArea + highArea * 0.2f);
+        
+        //calculating min and max distances
+        
+        minSchoolDistance = (int) (lowSchoolDistance - lowSchoolDistance * 0.5f);
+        maxSchoolDistance = (int) (highSchoolDistance + highSchoolDistance * 0.5f);
+        
     }
 
     List<Rekord> start() {
 
         //calculating max distances to school
 
-        maxSchoolDistance = (int) (distanceToSchool + 5);
 
         //calculating max distance to town
 
@@ -186,8 +203,6 @@ public class Logika {
             rekord.info = "<br /><img src='img/trueSmall.png' /> Mieszkanie jest <b>tańsze</b> niż oczekiwane";
         }
         
-        
-        //System.out.println("moneyPercent: " + moneyPercent / 100.0);
         if (rekord.area > maxArea || rekord.area < minArea) {
             areaPercent = 0;
         } else if (rekord.area >= lowArea && rekord.area <= highArea) {
@@ -219,26 +234,44 @@ public class Logika {
             rekord.info += "<br /><img src='img/falseSmall.png' /> Mieszkanie jest <b>mniejsze</b> niż oczekiwano ";
         }
 
-        percent = (moneyPercent + areaPercent) / 2;
+        if (selectedDistanceToSchool)
+        if (rekord.closeToSchool > maxSchoolDistance || rekord.closeToSchool < minSchoolDistance) {
+            areaPercent = 0;
+        } else if (rekord.closeToSchool >= lowSchoolDistance && rekord.closeToSchool <= highSchoolDistance) {
+            areaPercent = 100;
+        } else if (rekord.closeToSchool > highSchoolDistance) {
+            int x1 = highSchoolDistance;
+            int y1 = 0;
 
-        if (selectedDistanceToSchool) { // w ogole jest zaznaczone
-            if (rekord.closeToSchool <= distanceToSchool) ;//	5 <= 3			
-            else if (rekord.closeToSchool <= maxSchoolDistance) {
-                int x1 = maxSchoolDistance;
-                int y1 = 0;
+            int x2 = maxSchoolDistance;
+            int y2 = 1;
 
-                int x2 = distanceToSchool;
-                int y2 = 1;
+            float a = (float) (y2 - y1) / (x2 - x1);
+            float b = (float) y1 - a * x1;
 
-                float a = (float) (y2 - y1) / (x2 - x1);
-                float b = (float) y1 - a * x1;
+            schoolDistancePercent = (int) ((a * rekord.closeToSchool + b) * 100);
+            schoolDistancePercent = Math.abs(100 - schoolDistancePercent);
+            rekord.info += "<br /><img src='img/falseSmall.png' /> Szkoła jest <b>dalej</b> niż oczekiwano ";
+        } else if (rekord.closeToSchool < lowSchoolDistance) {
+            int x1 = minSchoolDistance;
+            int y1 = 0;
 
-                schoolDistancePercent = (int) ((a * rekord.closeToSchool + b) * 100);
+            int x2 = lowSchoolDistance;
+            int y2 = 1;
 
-                percent = (percent + schoolDistancePercent) / 2;
-                rekord.info += "<br /><img src='img/falseSmall.png' /> Mieszkanie jest <b>daleko od szkoły</b>";
-            }
+            float a = (float) (y2 - y1) / (x2 - x1);
+            float b = (float) y1 - a * x1;
+
+            schoolDistancePercent = (int) ((a * rekord.closeToSchool + b) * 100);
+            rekord.info += "<br /><img src='img/trueSmall.png' /> Szkoła jest <b>bliżej</b> niż oczekiwano ";
         }
+        
+        if (selectedDistanceToSchool) {
+            percent = (int) ((moneyPercent + areaPercent + schoolDistancePercent) / 3.0);
+        } else {
+            percent = (int) ((moneyPercent + areaPercent) / 2.0);
+        }
+
 
         if (selectedDistanceToDowntown) { // w ogole jest zaznaczone
             krotka.distance = distance;
