@@ -5,6 +5,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +35,8 @@ public class ServletValueEditor extends HttpServlet {
             HttpSession session = request.getSession(true);
             String tmp;
             PrintWriter out = response.getWriter();
+            
+            
             for(int i=1;i<6;i++){
            
                  tmp = request.getParameter("cena"+String.valueOf(i)+"min");
@@ -62,7 +65,7 @@ public class ServletValueEditor extends HttpServlet {
                  
                   tmp = request.getParameter("odleglosc"+String.valueOf(i)+"min");
                  if(tmp!=null){
-                    // out.write("odleglosc"+String.valueOf(i)+"min" + " : " + tmp +"<br>");
+                     // out.write("odleglosc"+String.valueOf(i)+"min" + " : " + tmp +"<br>");
                      session.setAttribute("odleglosc"+String.valueOf(i)+"min",tmp);
                  }
                  
@@ -72,6 +75,7 @@ public class ServletValueEditor extends HttpServlet {
                      session.setAttribute("odleglosc"+String.valueOf(i)+"max",tmp);
                  }
             }
+            
             out.close();
     }
 

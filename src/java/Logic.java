@@ -17,9 +17,10 @@ public class Logic {
     String  flatSize, sNorm, tNorm;
     boolean garage, secured, playground, elevator, isConditionalQuery, selectedDistanceToSchool, isMoney;
     ArrayList mTuplesList;
+    int [] distanceValues;
     Tuple mTuple;
 
-    public Logic(int lowPrice, int highPrice,
+    public Logic(int [] distanceValues, int lowPrice, int highPrice,
             int distanceToSchool,
             int distanceToDowntown,
             int lowArea, 
@@ -48,6 +49,7 @@ public class Logic {
         this.tNorm = tNorm;
         this.distanceToDowntown = distanceToDowntown;
         this.isConditionalQuery = isDistance;
+        this.distanceValues = distanceValues;
       
         if (distanceToSchool != -1) {
             selectedDistanceToSchool = true;
@@ -66,7 +68,7 @@ public class Logic {
                         break;
             } 
         }
-        
+                
         //obliczanie minimalnej i maksymalnej ceny
         minPrice = (int) (lowPrice - lowPrice * 0.5f);
         maxPrice = (int) (highPrice + highPrice * 0.5f);
@@ -127,6 +129,20 @@ public class Logic {
     
         Collections.sort(finalList);
         return finalList;
+    }
+    
+    int computeDistance(int distanceInMeters) {
+        if (distanceInMeters >= distanceValues[0] && distanceInMeters < distanceValues[5]) {
+            return 1;
+        } else if (distanceInMeters >= distanceValues[1] && distanceInMeters < distanceValues[6]) {
+            return 2;
+        } else if (distanceInMeters >= distanceValues[2] && distanceInMeters < distanceValues[7]) {
+            return 3;
+        } else if (distanceInMeters >= distanceValues[3] && distanceInMeters < distanceValues[8]) {
+            return 4;
+        } else {
+            return 5;
+        }
     }
 
     // logika zapytań rozmytych (nie bipolarne)
@@ -241,7 +257,7 @@ public class Logic {
 
 
         if (isConditionalQuery) { // w ogole jest zaznaczone
-            mTuple.distance = distanceToDowntown;
+            mTuple.distance = computeDistance(rekord.blocksFromCenter); //1 - 5
         } else {
             mTuple.distance = 0;
         }

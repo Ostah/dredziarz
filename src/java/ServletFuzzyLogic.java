@@ -5,6 +5,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -119,9 +120,28 @@ public class ServletFuzzyLogic extends HttpServlet {
         } else {
             isMoney = false;
         }
-
+        
+             
+        int [] distanceValues = new int [10];
+        String tmp;
+        for(int i = 1; i < 6; i++) {
+            
+            tmp = (String) session.getAttribute("odleglosc" + String.valueOf(i) + "min");
+                 if(tmp != null) {
+                     distanceValues[i-1] = Integer.valueOf(tmp);
+                 }            
+        }
+        for(int i = 1; i < 6; i++) {
+            
+            tmp = (String) session.getAttribute("odleglosc" + String.valueOf(i) + "max");
+                 if(tmp != null) {
+                     distanceValues[i+4] = Integer.valueOf(tmp);
+                 }            
+        }
+        
 
         Logic logika = new Logic(
+                distanceValues,
                 priceMin,
                 priceMax,
                 distanceToSchool,
