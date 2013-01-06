@@ -16,10 +16,11 @@ public class Logika {
     public static final int[] largeArea = {70, 120};
     public static final int[] veryLargeArea = {120, 300};
     //distances
-    public static final int closeDistance = 2;
-    public static final int mediumDistance = 5;
-    public static final int farDistance = 15;
-    int lowPrice, highPrice, distanceToSchool, distanceMin, distanceMax, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxSchoolDistance, maxTownDistance;
+    public static final int[] closeSchoolDistance = {2, 3};
+    public static final int[] mediumSchoolDistance = {5, 10};
+    public static final int[] farSchoolDistance = {15, 30};
+    
+    int lowPrice, highPrice, distanceToSchool, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxSchoolDistance, maxTownDistance;
     String type, flatSize, sNorm, tNorm;
     boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney;
     ArrayList krotki;
@@ -46,8 +47,6 @@ public class Logika {
         this.lowPrice = lowPrice;
         this.highPrice = highPrice;
         this.distanceToSchool = distanceToSchool;
-        this.distanceMin = distanceMin;
-        this.distanceMax = distanceMax;
         this.type = type;
         this.lowArea = lowArea;
         this.highArea = highArea;
