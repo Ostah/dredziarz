@@ -38,34 +38,38 @@
   <form method="post" action="fuzzyLogic">
 		  <div id="main">
 			  <fieldset>
-			  	<legend>Cena</legend> <br>		
-                                <div class="fieldrow">B. Tanie Od <input name="cena1min" id="cena1min" type="number"> zł do <input name="cena1max" id="cena1max" type="number"> zł </div>
-			  			<div class="fieldrow">Tanie &#9 Od <input name="cena2min" id="cena2min" type="number"> zł do <input name="cena2max" id="cena2max" type="number"> zł </div>
-			  			<div class="fieldrow">Normalne Od <input name="cena3min" id="cena3min" type="number"> zł do <input name="cena3max" id="cena3max" type="number"> zł </div>
-			  			<div class="fieldrow">Drogie Od <input name="cena4min" id="cena4min" type="number"> zł do <input name="cena4max" id="cena4max" type="number"> zł </div>
-			  			<div class="fieldrow">B. Drogie Od <input name="cena5min" id="cena5min" type="number"> zł do <input name="cena5max" id="cena5max" type="number"> zł </div>
-			  </fieldset>
+			  	<legend>Cena</legend> <br>	
+                                <table >
+                                        <tr> <td>  B. Tanie </td><td> Od <input name="cena1min" id="cena1min" type="number"> zł</td> <td> do <input name="cena1max" id="cena1max" type="number"> zł</td> </tr>
+			  		<tr> <td>  	Tanie </td><td> Od <input name="cena2min" id="cena2min" type="number"> zł</td><td>  do <input name="cena2max" id="cena2max" type="number"> zł</td></tr>
+			  		<tr> <td>  	Normalne </td><td>  Od <input name="cena3min" id="cena3min" type="number"> zł</td><td>  do <input name="cena3max" id="cena3max" type="number"> zł</td> </tr>
+			  		<tr> <td>  	Drogie </td><td> Od <input name="cena4min" id="cena4min" type="number"> zł</td><td>  do <input name="cena4max" id="cena4max" type="number"> zł</td></tr>
+			  		<tr> <td>  	B. Drogie</td><td> Od <input name="cena5min" id="cena5min" type="number"> zł</td><td>  do <input name="cena5max" id="cena5max" type="number"> zł</td></tr>
+                                </table>
+                                                </fieldset>
 		   </div>
 		    <div id="main">
 			  <fieldset>
 			  	<legend>Metraż</legend>	<br>
-			  			<div class="fieldrow">B. Małe Od <input name="metraz1min" id="metraz1min" type="number"> m<sup>2</sup> do <input name="metraz1max" id="metraz1max" type="number"> m<sup>2</sup> </div>
-			  			<div class="fieldrow">Małe Od <input name="metraz2min" id="metraz2min" type="number"> m<sup>2</sup> do <input name="metraz2max" id="metraz2max" type="number"> m<sup>2</sup> </div>
-			  			<div class="fieldrow">Normalne Od <input name="metraz3min" id="metraz3min" type="number"> m<sup>2</sup> do <input name="metraz3max" id="metraz3max" type="number"> m<sup>2</sup> </div>
-			  			<div class="fieldrow">Duże Od <input name="metraz4min" id="metraz4min" type="number"> m<sup>2</sup> do <input name="metraz4max" id="metraz4max" type="number"> m<sup>2</sup> </div>
-			  			<div class="fieldrow">B. Duże Od <input name="metraz5min" id="metraz5min" type="number"> m<sup>2</sup> do <input name="metraz5max" id="metraz5max" type="number"> m<sup>2</sup> </div>
-			  </fieldset>
+                                <table>
+			  			<tr> <td>B. Małe</td><td> Od <input name="metraz1min" id="metraz1min" type="number"> m<sup>2</sup></td><td> do <input name="metraz1max" id="metraz1max" type="number"> m<sup>2</sup> </td> </tr>
+			  			<tr> <td>Małe</td><td> Od <input name="metraz2min" id="metraz2min" type="number"> m<sup>2</sup> </td><td>do <input name="metraz2max" id="metraz2max" type="number"> m<sup>2</sup></td> </tr>
+			  			<tr> <td>Normalne</td><td> Od <input name="metraz3min" id="metraz3min" type="number"> m<sup>2</sup></td><td> do <input name="metraz3max" id="metraz3max" type="number"> m<sup>2</sup> </td> </tr>
+			  			<tr> <td>Duże</td><td> Od <input name="metraz4min" id="metraz4min" type="number"> m<sup>2</sup></td><td> do <input name="metraz4max" id="metraz4max" type="number"> m<sup>2</sup> </td> </tr>
+			  			<tr> <td>B. Duże</td><td> Od <input name="metraz5min" id="metraz5min" type="number"> m<sup>2</sup></td><td> do <input name="metraz5max" id="metraz5max" type="number"> m<sup>2</sup></td> </tr>
+			  </table>
+                          </fieldset>
 		   </div>
       
                    <div id="main">
 			  <fieldset>
-			  	<legend>Odległość od centrum</legend> <br>	
-			  			<div class="fieldrow">B. Mała Od <input name="odleglosc1min" id="odleglosc1min" type="number"> m do <input name="odleglosc1max" id="odleglosc1max" type="number"> m </div>
-			  			<div class="fieldrow">Małe Od <input name="odleglosc2min" id="odleglosc2min" type="number"> m do <input name="odleglosc2max" id="odleglosc2max" type="number"> m </div>
-			  			<div class="fieldrow">Normalna Od <input name="odleglosc3min" id="odleglosc3min" type="number"> m do <input name="odleglosc3max" id="odleglosc3max" type="number"> m </div>
-			  			<div class="fieldrow">Duża Od <input name="odleglosc4min" id="odleglosc4min" type="number"> m do <input name="odleglosc4max" id="odleglosc4max" type="number"> m </div>
-			  			<div class="fieldrow">B. Duża Od <input name="odleglosc5min" id="odleglosc5min" type="number"> m do <input name="odleglosc5max" id="odleglosc5max" type="number"> m </div>
-			  </fieldset>
+			  	<legend>Odległość od centrum</legend> <br> <table>	
+			  			<tr> <td>B. Mała</td><td> Od <input name="odleglosc1min" id="odleglosc1min" type="number"> m </td><td>do <input name="odleglosc1max" id="odleglosc1max" type="number"> m </td> </tr>
+			  			<tr> <td>Małe</td><td> Od <input name="odleglosc2min" id="odleglosc2min" type="number"> m </td><td>do <input name="odleglosc2max" id="odleglosc2max" type="number"> m </td> </tr>
+			  			<tr> <td>Normalna</td><td> Od <input name="odleglosc3min" id="odleglosc3min" type="number"> m </td><td>do <input name="odleglosc3max" id="odleglosc3max" type="number"> m </td> </tr>
+			  			<tr> <td>Duża</td><td> Od <input name="odleglosc4min" id="odleglosc4min" type="number"> m </td><td>do <input name="odleglosc4max" id="odleglosc4max" type="number"> m </td> </tr>
+			  			<tr> <td>B. Duża</td><td> Od <input name="odleglosc5min" id="odleglosc5min" type="number"> m</td><td> do <input name="odleglosc5max" id="odleglosc5max" type="number"> m </td> </tr>
+			 </table>  </fieldset>
 		   </div>
 		    
 		    <div id="sliderNavigation">

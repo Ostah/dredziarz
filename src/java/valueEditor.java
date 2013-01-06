@@ -31,7 +31,27 @@ public class valueEditor extends HttpServlet {
             throws ServletException, IOException {
         
             HttpSession session = request.getSession(true);
-            session.setAttribute("variable","123");
+            String tmp;
+            
+            for(int i=1;i<6;i++){
+                 tmp = request.getParameter("cena"+String.valueOf(i)+"min");
+                 if(tmp!=null) session.setAttribute("cena"+String.valueOf(i)+"min",tmp);
+                 
+                 tmp = request.getParameter("cena"+String.valueOf(i)+"max");
+                 if(tmp!=null) session.setAttribute("cena"+String.valueOf(i)+"max",tmp);
+                 
+                 tmp = request.getParameter("metraz"+String.valueOf(i)+"min");
+                 if(tmp!=null) session.setAttribute("metraz"+String.valueOf(i)+"min",tmp);
+                 
+                 tmp = request.getParameter("metraz"+String.valueOf(i)+"max");
+                 if(tmp!=null) session.setAttribute("metraz"+String.valueOf(i)+"max",tmp);
+                 
+                  tmp = request.getParameter("odleglosc"+String.valueOf(i)+"min");
+                 if(tmp!=null) session.setAttribute("odleglosc"+String.valueOf(i)+"min",tmp);
+                 
+                 tmp = request.getParameter("odleglosc"+String.valueOf(i)+"max");
+                 if(tmp!=null) session.setAttribute("odleglosc"+String.valueOf(i)+"max",tmp);
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
