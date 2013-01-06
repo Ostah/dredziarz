@@ -24,6 +24,7 @@ public class Logika {
     boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney;
     ArrayList krotki;
     Krotka krotka;
+    int distance;
 
 
     public Logika(int lowPrice, int highPrice,
@@ -57,6 +58,7 @@ public class Logika {
         this.isMoney = isMoney;
         this.sNorm = sNorm;
         this.tNorm = tNorm;
+        this.distance = distance;
 /*
         System.out.println("Low cena: " + lowPrice);
         System.out.println("High cena: " + highPrice);
@@ -237,6 +239,8 @@ public class Logika {
         }
 
         if (selectedDistanceToDowntown) { // w ogole jest zaznaczone
+            krotka.distance = distance;
+        } else {
             krotka.distance = 0;
         }
 
