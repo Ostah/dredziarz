@@ -58,7 +58,7 @@ public class Record implements Comparable<Record>{
         String conditional = compatibilityConditional==-1 ? "" : "<td class='important'>" + this.compatibilityConditional + " %</td>";
         return "<tr><td class='important'> " + this.title + "</td><td class='important'>" + this.compatibility + " %</td>" +
                 "<td class='important'>" + this.compatibilityBipolar + " %</td>"+conditional+
-                 "<td>" +this.city +" " +this.address + "</td><td> " + this.area + " m<sup>2</sup> </td><td> " +
+                 "<td>" +this.address +" " +this.city + "</td><td> " + this.area + " m<sup>2</sup> </td><td> " +
                 this.price + " zł</td><td>" + this.blocksFromCenter + " m</td><td>" +
                 this.closeToSchool + " m</td><td>" + checkTrue(elevator) + " </td><td> " +
                 checkTrue(playground) + "</td><td>" + checkTrue(securityEstate) + "</td><td class='infos'>" + this.info +"</td>";

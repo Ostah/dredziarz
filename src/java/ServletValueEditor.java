@@ -31,48 +31,48 @@ public class ServletValueEditor extends HttpServlet {
             throws ServletException, IOException {
             response.setContentType("text/html;charset=UTF-8");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-//            HttpSession session = request.getSession(true);
-//            String tmp;
-//            PrintWriter out = response.getWriter();
-//            for(int i=1;i<6;i++){
-//           
-//                 tmp = request.getParameter("cena"+String.valueOf(i)+"min");
-//                 if(tmp!=null) {
-//                     out.write("cena"+String.valueOf(i)+"min" + " : " + tmp +"<br>");
-//                     session.setAttribute("cena"+String.valueOf(i)+"min",tmp);
-//                 }
-//                 
-//                 tmp = request.getParameter("cena"+String.valueOf(i)+"max");
-//                 if(tmp!=null){
-//                     out.write("cena"+String.valueOf(i)+"max" + " : " + tmp +"<br>");
-//                     session.setAttribute("cena"+String.valueOf(i)+"max",tmp);
-//                 }
-//                 
-//                 tmp = request.getParameter("metraz"+String.valueOf(i)+"min");
-//                 if(tmp!=null){
-//                     out.write("metraz"+String.valueOf(i)+"min" + " : " + tmp +"<br>");
-//                     session.setAttribute("metraz"+String.valueOf(i)+"min",tmp);
-//                 }
-//                 
-//                 tmp = request.getParameter("metraz"+String.valueOf(i)+"max");
-//                 if(tmp!=null){
-//                      out.write("metraz"+String.valueOf(i)+"max" + " : " + tmp +"<br>");
-//                     session.setAttribute("metraz"+String.valueOf(i)+"max",tmp);
-//                 }
-//                 
-//                  tmp = request.getParameter("odleglosc"+String.valueOf(i)+"min");
-//                 if(tmp!=null){
-//                     out.write("odleglosc"+String.valueOf(i)+"min" + " : " + tmp +"<br>");
-//                     session.setAttribute("odleglosc"+String.valueOf(i)+"min",tmp);
-//                 }
-//                 
-//                 tmp = request.getParameter("odleglosc"+String.valueOf(i)+"max");
-//                 if(tmp!=null){
-//                      out.write("odleglosc"+String.valueOf(i)+"max" + " : " + tmp +"<br>");
-//                     session.setAttribute("odleglosc"+String.valueOf(i)+"max",tmp);
-//                 }
-//            }
-//            out.close();
+            HttpSession session = request.getSession(true);
+            String tmp;
+            PrintWriter out = response.getWriter();
+            for(int i=1;i<6;i++){
+           
+                 tmp = request.getParameter("cena"+String.valueOf(i)+"min");
+                 if(tmp!=null) {
+                    // out.write("cena"+String.valueOf(i)+"min" + " : " + tmp +"<br>");
+                     session.setAttribute("cena"+String.valueOf(i)+"min",tmp);
+                 }
+                 
+                 tmp = request.getParameter("cena"+String.valueOf(i)+"max");
+                 if(tmp!=null){
+                   //  out.write("cena"+String.valueOf(i)+"max" + " : " + tmp +"<br>");
+                     session.setAttribute("cena"+String.valueOf(i)+"max",tmp);
+                 }
+                 
+                 tmp = request.getParameter("metraz"+String.valueOf(i)+"min");
+                 if(tmp!=null){
+                    // out.write("metraz"+String.valueOf(i)+"min" + " : " + tmp +"<br>");
+                     session.setAttribute("metraz"+String.valueOf(i)+"min",tmp);
+                 }
+                 
+                 tmp = request.getParameter("metraz"+String.valueOf(i)+"max");
+                 if(tmp!=null){
+                     // out.write("metraz"+String.valueOf(i)+"max" + " : " + tmp +"<br>");
+                     session.setAttribute("metraz"+String.valueOf(i)+"max",tmp);
+                 }
+                 
+                  tmp = request.getParameter("odleglosc"+String.valueOf(i)+"min");
+                 if(tmp!=null){
+                    // out.write("odleglosc"+String.valueOf(i)+"min" + " : " + tmp +"<br>");
+                     session.setAttribute("odleglosc"+String.valueOf(i)+"min",tmp);
+                 }
+                 
+                 tmp = request.getParameter("odleglosc"+String.valueOf(i)+"max");
+                 if(tmp!=null){
+                     // out.write("odleglosc"+String.valueOf(i)+"max" + " : " + tmp +"<br>");
+                     session.setAttribute("odleglosc"+String.valueOf(i)+"max",tmp);
+                 }
+            }
+            out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
