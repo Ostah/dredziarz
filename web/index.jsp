@@ -16,6 +16,47 @@
 </head>
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+   <% 
+   if (session.getAttribute("cena1min") == null) {
+
+        session.setAttribute("cena1min", "0");
+        session.setAttribute("cena2min", "50000");
+        session.setAttribute("cena3min", "150000");
+        session.setAttribute("cena4min", "350000");
+        session.setAttribute("cena5min", "600000");
+        
+        session.setAttribute("cena1max", "50000");
+        session.setAttribute("cena2max", "150000");
+        session.setAttribute("cena3max", "350000");
+        session.setAttribute("cena4max", "600000");
+        session.setAttribute("cena5max", "2000000");
+        
+        session.setAttribute("metraz1min", "0");
+        session.setAttribute("metraz2min", "18");
+        session.setAttribute("metraz3min", "35");
+        session.setAttribute("metraz4min", "75");
+        session.setAttribute("metraz5min", "135");
+        
+        session.setAttribute("metraz1max", "18");
+        session.setAttribute("metraz2max", "35");
+        session.setAttribute("metraz3max", "75");
+        session.setAttribute("metraz4max", "135");
+        session.setAttribute("metraz5max", "400");
+        
+        session.setAttribute("odleglosc1min", "0");
+        session.setAttribute("odleglosc2min", "100");
+        session.setAttribute("odleglosc3min", "300");
+        session.setAttribute("odleglosc4min", "1000");
+        session.setAttribute("odleglosc5min", "5000");
+        
+        session.setAttribute("odleglosc1max", "100");
+        session.setAttribute("odleglosc2max", "300");
+        session.setAttribute("odleglosc3max", "1000");
+        session.setAttribute("odleglosc4max", "5000");
+        session.setAttribute("odleglosc5max", "20000");
+     }
+  %>
+  
   <header>
 	  <h1>Wyszukiwarka mieszkań</h1>
   </header>

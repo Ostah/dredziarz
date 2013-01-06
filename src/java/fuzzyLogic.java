@@ -39,9 +39,10 @@ public class fuzzyLogic extends HttpServlet {
         
         int distanceToDowntown = -1;
         int distanceToSchool  = -1;
+        int priceMax=-1, priceMin=-1, areaMax=-1, areaMin=-1, distanceMax=-1, distanceMin=-1;
         String type = null;
         String[] estateType;
-         HttpSession session = request.getSession();
+         HttpSession session = request.getSession(true);
         boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney, isArea;
         
         if (request.getParameter("closeToCenter") != null) {
@@ -55,7 +56,37 @@ public class fuzzyLogic extends HttpServlet {
                 distanceToSchool = Integer.parseInt(request.getParameter("req_distanceFromSchool"));
             }
         } 
-         
+        
+        String nr = request.getParameter("budget");
+        if (nr != null) {
+            String b = "cena" + nr + "min";
+            String attr = (String) session.getAttribute(b);
+            priceMin = Integer.valueOf(attr);
+            b = "cena" + nr + "max";
+            attr = (String) session.getAttribute(b);
+            priceMax = Integer.valueOf(attr);
+        }
+        
+        nr = request.getParameter("area");
+        if (nr != null) {
+            String b = "metraz" + nr + "min";
+            String attr = (String) session.getAttribute(b);
+            areaMin = Integer.valueOf(attr);
+            b = "metraz" + nr + "max";
+            attr = (String) session.getAttribute(b);
+            areaMax = Integer.valueOf(attr);
+        }
+        
+        nr = request.getParameter("req_distanceFromCenter");
+        if (nr != null) {
+            String b = "odleglosc" + nr + "min";
+            String attr = (String) session.getAttribute(b);
+            distanceMin = Integer.valueOf(attr);
+            b = "odleglosc" + nr + "max";
+            attr = (String) session.getAttribute(b);
+            distanceMax = Integer.valueOf(attr);
+        }
+
 
         
         if (request.getParameter("estateType") != null) {
@@ -116,13 +147,14 @@ public class fuzzyLogic extends HttpServlet {
        
       
 	Logika logika = new Logika(
-                Integer.parseInt(request.getParameter("minBudget")), 
-                Integer.parseInt(request.getParameter("maxBudget")), 
+               priceMin, 
+                priceMax, 
                 distanceToSchool, 
-                distanceToDowntown, 
+                distanceMin, 
+                distanceMax,
                 type, 
-                Integer.parseInt(request.getParameter("minArea")), 
-                Integer.parseInt(request.getParameter("maxArea")), 
+                areaMin, 
+                areaMax, 
                 garage, 
                 secured, 
                 playground, 
