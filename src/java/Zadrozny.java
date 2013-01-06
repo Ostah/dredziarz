@@ -21,17 +21,12 @@ public class Zadrozny {
 		MAXIMUM, PROB_SUM, S_LUKASIEWICZ
     }
     
-    static float compute(ArrayList<Tuple> list, Tuple tuple, tNorm t, sNorm s, Boolean circumstancial)
-    {
-        
+    static float compute(ArrayList<Tuple> list, Tuple tuple, tNorm t, sNorm s, Boolean circumstancial){      
         float internalMax = 0.0f;
         float outerMax;
        
-        for (int i = 0; i < list.size(); i++) {
-            
-            //znajduje największą wartość z min(C(s),P(s))    
+        for (int i = 0; i < list.size(); i++) {   
             float Cs = list.get(i).cId;
-            float isSameDist = tuple.isSameDistance(list.get(i));
             if(circumstancial) Cs = t_norm(tuple.isSameDistance(list.get(i)),list.get(i).cId,t);
             float minimum = t_norm(Cs, list.get(i).pId,t);
             if (internalMax < minimum) internalMax = minimum;

@@ -35,7 +35,7 @@ public class ServletValueEditor extends HttpServlet {
             HttpSession session = request.getSession(true);
             String tmp;
             PrintWriter out = response.getWriter();
-            
+            session.setMaxInactiveInterval(9999999);
             
             for(int i=1;i<6;i++){
            
