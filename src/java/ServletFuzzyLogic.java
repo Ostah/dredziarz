@@ -38,19 +38,11 @@ public class ServletFuzzyLogic extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int distanceToDowntown = -1;
         int distanceToSchool = -1;
         int priceMax = -1, priceMin = -1, areaMax = -1, areaMin = -1, distance = -1;
-        String type = null;
-        String[] estateType;
+
         HttpSession session = request.getSession(true);
         boolean garage, secured, playground, elevator, selectedDistanceToDowntown, selectedDistanceToSchool, isMoney, isArea;
-
-        if (request.getParameter("closeToCenter") != null) {
-            if (request.getParameter("req_distanceFromCenter") != null) {
-                distanceToDowntown = Integer.parseInt(request.getParameter("req_distanceFromCenter"));
-            }
-        }
 
         if (request.getParameter("closeToSchool") != null) {
             if (request.getParameter("req_distanceFromSchool") != null) {

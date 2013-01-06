@@ -289,11 +289,11 @@ public class Logic {
             Tuple localTuple = (Tuple) (e.nextElement());
         
             Zadrozny.tNorm t_norm=Zadrozny.tNorm.MINIMUM;
-            Zadrozny.sNorm s_norm=Zadrozny.sNorm.MAKSIMUM;
+            Zadrozny.sNorm s_norm=Zadrozny.sNorm.MAXIMUM;
         
-            if(tNorm.equalsIgnoreCase("iloczyn")) t_norm = Zadrozny.tNorm.ILOCZYN;
+            if(tNorm.equalsIgnoreCase("iloczyn")) t_norm = Zadrozny.tNorm.PRODUCT;
             if(tNorm.equalsIgnoreCase("t_lukasiewicz")) t_norm = Zadrozny.tNorm.T_LUKASIEWICZ;       
-            if(sNorm.equalsIgnoreCase("suma")) s_norm = Zadrozny.sNorm.SUMA_PROB;
+            if(sNorm.equalsIgnoreCase("suma")) s_norm = Zadrozny.sNorm.PROB_SUM;
             if(sNorm.equalsIgnoreCase("s_lukasiewicz")) s_norm = Zadrozny.sNorm.S_LUKASIEWICZ;
         
             float result = Zadrozny.compute(mTuplesList, localTuple,t_norm, s_norm,false);
