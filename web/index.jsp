@@ -75,7 +75,7 @@
 			  			<div><select name="budget">
                                                         <option value="1">Bardzo Tanie</option>
 				     			<option value="2">Tanie</option>
-				     			<option value="3">Normalne</option>
+				     			<option value="3" selected = "selected">Normalne</option>
                                                         <option value="4">Drogie</option>
                                                         <option value="5">Bardzo Drogie</option>
 				     			</select>
@@ -88,7 +88,7 @@
                               <div><select name="area">
                                                         <option value="1">Bardzo Mała</option>
 				     			<option value="2">Mała</option>
-				     			<option value="3">Normalna</option>
+				     			<option value="3" selected = "selected">Normalna</option>
                                                         <option value="4">Duża</option>
                                                         <option value="5">Bardzo Duża</option>
 				     			</select>
@@ -103,7 +103,7 @@
 				     			<select name="req_distanceFromCenter">
                                                         <option value="1">Bardzo Blisko</option>
 				     			<option value="2">Blisko</option>
-				     			<option value="3">Umiarkowanie</option>
+				     			<option value="3" selected = "selected">Umiarkowanie</option>
                                                         <option value="4">Daleko</option>
                                                         <option value="5">Bardzo Daleko</option>
 				     			</select>
