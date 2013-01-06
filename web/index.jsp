@@ -26,7 +26,7 @@
   </div>
   <div id="sliderNavigation">
   <form method="post" action="valueEditor">
-       <input type="submit" value="Zmien wartosci" />
+       <input type="submit" value="Zmień wartości" />
   </form>
   </div>
   <form method="post" action="fuzzyLogic">
