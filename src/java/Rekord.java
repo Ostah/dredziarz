@@ -47,8 +47,8 @@ public class Rekord implements Comparable<Rekord>{
         return "<tr><td class='important'> " + this.title + "</td><td class='important'>" + this.compatibility + " %</td>" +
                 "<td class='important'>" + this.compatibilityBipolar + " %</td>"+conditional+
                  "<td>" + this.address + "</td><td> " + this.area + " m<sup>2</sup> </td><td> " +
-                this.price + " zł</td><td>" + this.blocksFromCenter + " przecznice</td><td>" +
-                this.closeToSchool + " przecznice</td><td>" + checkTrue(elevator) + " </td><td> " +
+                this.price + " zł</td><td>" + this.blocksFromCenter + " metry/ów</td><td>" +
+                this.closeToSchool + " metry/ów</td><td>" + checkTrue(elevator) + " </td><td> " +
                 checkTrue(playground) + "</td><td>" + checkTrue(securityEstate) + "</td><td class='infos'>" + this.info +"</td>";
     }
         

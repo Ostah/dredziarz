@@ -16,9 +16,9 @@ public class Logika {
     public static final int[] largeArea = {70, 120};
     public static final int[] veryLargeArea = {120, 300};
     //distances
-    public static final int[] closeSchoolDistance = {2, 3};
-    public static final int[] mediumSchoolDistance = {5, 10};
-    public static final int[] farSchoolDistance = {15, 30};
+    public static final int[] closeSchoolDistance = {0, 500};
+    public static final int[] mediumSchoolDistance = {500, 5000};
+    public static final int[] farSchoolDistance = {5000, 20000};
     
     int lowPrice, highPrice, distanceToSchool, lowArea, highArea, minPrice, maxPrice, minArea, maxArea, maxTownDistance, lowSchoolDistance, highSchoolDistance, minSchoolDistance, maxSchoolDistance;
     String type, flatSize, sNorm, tNorm;
@@ -127,7 +127,6 @@ public class Logika {
                 rekord[i].price = rs.getInt("price");
                 rekord[i].area = rs.getInt("size");
                 rekord[i].year = rs.getInt("year");
-                rekord[i].rooms = rs.getInt("rooms");
                 rekord[i].onWhatFloor = rs.getInt("onwhatfloor");
                 rekord[i].garage = rs.getBoolean("garage");
                 rekord[i].blocksFromCenter = rs.getInt("blocksFromCenter");
