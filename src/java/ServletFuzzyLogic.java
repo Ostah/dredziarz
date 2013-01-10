@@ -14,10 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author piotrpaul
- */
+
 @WebServlet(name = "fuzzyLogic", urlPatterns = {"/fuzzyLogic"})
 public class ServletFuzzyLogic extends HttpServlet {
 
@@ -157,8 +154,19 @@ public class ServletFuzzyLogic extends HttpServlet {
                 request.getParameter("snorm"),
                 request.getParameter("tnorm"));
 
-        List<Record> lista = logika.start();
-
+        float[] most= new float[2];
+        most[0] = 0.0f;
+        List<Record> lista = logika.start(most);
+        most[0]=most[1]/100.0f;
+        System.out.println("Clean most: "+most[1]);
+        if(most[0]>=0.8f) most[0] = 1.0f;
+        else if(most[0] <0.3) most[0] = 0.0f;
+        else most[0] = 2.0f*most[0]-0.6f;
+        
+        int tmp2 =(int) ((Math.round(most[0]*100)/100.0d)*100);
+     
+        request.setAttribute("mostResults", tmp2);
+        request.setAttribute("resultList", lista);
         request.setAttribute("resultList", lista);
         request.setAttribute("minArea", areaMin);
         request.setAttribute("maxArea", areaMax);

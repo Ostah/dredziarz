@@ -82,7 +82,7 @@ public class Logic {
         maxSchoolDistance = (int) (highSchoolDistance + highSchoolDistance * 0.5f);
     }
 
-    List<Record> start() {
+    List<Record> start(float[] arrayCheat) {
 
         //połączenie z bazą danych
         Database dbConn = new Database();
@@ -125,13 +125,17 @@ public class Logic {
         computeBipolar(list);
         
         List<Record> finalList = new ArrayList<Record>();
+        
+        float compabilitySum = 0.0f;
         for(int j=0;j<list.size();j++){
             Record r = list.get(j);
+            compabilitySum += r.compatibilityBipolar;
             if(r.compatibility!=0 || r.compatibilityBipolar!=0 || (r.compatibilityConditional !=0 && r.compatibilityConditional!=-1)){
                 finalList.add(r);
             }
         }
-    
+        arrayCheat[1]= new Float(compabilitySum/(float)list.size());
+        
         Collections.sort(finalList);
         return finalList;
     }
